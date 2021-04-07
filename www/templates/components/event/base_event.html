@@ -1,0 +1,55 @@
+
+    {% block event_title %}
+    <!--Title-->
+    <h2>{{ evento['title'] }}</h2>
+    {% endblock %}
+    
+
+    {% block event_content %}
+    <!--Event-->
+    <div class="mmm">
+        <p>
+            <b>Organizador:</b> {{ evento['author'] }}</h3>
+        </p>
+        <p>
+            <b>Fecha:</b> {{ evento['date'] }}
+        </p>
+
+        <p>
+            {{ evento['description'] }}
+        </p>
+
+        <div class="images-container">
+            <img
+                class="shadow"
+                loading="lazy"
+                src="../assets/places/cahorros.jpg"
+                alt="Los cahorros"
+            />
+            <img
+                class="shadow"
+                loading="lazy"
+                src="../assets/places/cahorros.jpg"
+                alt="Los cahorros"
+            />
+            <img
+                class="shadow"
+                loading="lazy"
+                src="../assets/places/cahorros.jpg"
+                alt="Los cahorros"
+            />
+            <img
+                class="shadow"
+                loading="lazy"
+                src="../assets/places/cahorros.jpg"
+                alt="Los cahorros"
+            />
+            <img
+                class="shadow"
+                loading="lazy"
+                src="../assets/places/cahorros.jpg"
+                alt="Los cahorros"
+            />
+        </div>
+    </div>
+    {% endblock %}

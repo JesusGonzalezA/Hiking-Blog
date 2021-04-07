@@ -1,0 +1,50 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+{% use "components/go_up_button.html" %}
+{% use "components/event/event.html" %}
+{% use "components/event/event_info.html" %}
+
+    {% set body_class = 'grid-container' %}
+
+    {% block title %}
+        {{ evento['title'] }}
+    {% endblock %}
+
+    {% block styles %}    
+        {{ parent() }}
+        <link rel="stylesheet" href="../styles/components/event.css" />
+        <link rel="stylesheet" href="../styles/components/comment.css" />
+    {% endblock %}
+
+    {% block header %}
+        {{ parent() }}
+         <!--Navigation-->
+         {% block navigation %}
+            {{ parent() }}
+         {% endblock %}
+    {% endblock %}
+
+    {% block main %}
+        {% block event %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block aside_content %}
+        {% block event_info %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block go_up_button %}
+        {% block go_up %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+    
+    {% block scripts %}
+    <script type="text/javascript" src="../src/components/modals/addCommentForm.js"></script>
+    <script type="module" src="../src/components/buttons/goTopButton.js"></script>
+    <script type="module" src="../src/components/buttons/showCommentButton.js"></script>
+    <script type="module" src="../src/components/buttons/hideCommentButton.js"></script>
+    {% endblock %}

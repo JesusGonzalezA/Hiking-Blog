@@ -1,0 +1,3 @@
+USE SIBW;
+
+DROP TABLE events;

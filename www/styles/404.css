@@ -1,0 +1,17 @@
+a {
+    text-decoration: underline;
+    color: rgb(0, 4, 255);
+}
+
+body {
+    color: white;
+}
+
+body {
+    background: rgb(217, 223, 255);
+    background: linear-gradient(90deg, rgba(0, 119, 255, 0.472) 0%, rgba(87, 84, 240, 0.657) 100%);
+}
+
+img{
+    max-width: 75%;
+}

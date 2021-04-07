@@ -1,0 +1,57 @@
+/* Areas */
+
+#cover {
+    grid-area: cover;
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+}
+
+aside {
+    grid-area: aside;
+}
+
+footer {
+    grid-area: footer;
+}
+
+/* Set container */ 
+
+.grid-print-container{
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: 33.33% 66.66%;
+    grid-template-areas: 
+    'header header'
+    'main main';    
+}
+
+.grid-container {
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: 33.33% 66.66%;
+    grid-template-areas: 
+    'cover cover'
+    'header header'
+    'aside main'
+    'footer footer';
+}
+
+/******************************************************************************/
+
+/* Responsive */
+@media only screen and ( max-width: 650px ){
+    .grid-container {
+        grid-template-areas: 
+        'cover cover'
+        'header header'
+        'main main'
+        'aside aside'
+        'footer footer';
+    }
+}

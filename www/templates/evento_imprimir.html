@@ -1,0 +1,29 @@
+{% extends "components/base.html" %}
+{% use "components/event/event_print.html" %}
+
+    {% set body_class = 'grid-print-container' %}
+
+    {% block title %}
+        Imprimir - {{ evento['title'] }}
+    {% endblock %}
+
+    {% block styles %}
+        {{ parent() }}
+        <link rel="stylesheet" href="../styles/components/event.css" />
+    {% endblock %}  
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block main %}
+        {% block event %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block aside %}
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}

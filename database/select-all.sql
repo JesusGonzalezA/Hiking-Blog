@@ -1,0 +1,3 @@
+USE SIBW;
+
+SELECT * FROM events;

@@ -1,0 +1,36 @@
+
+/* Title */
+
+.title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(../assets/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.title-section::after{
+    content: "";
+}
+
+.grid-print-container .title-section:before{
+    content: ""
+}
+
+/* Logo */ 
+
+.title-section > img {
+    max-height: 130px;
+    width: 75px;
+    height: 75px;
+}
+
+/* Title */
+
+.title-section > h1 {
+    color:white;
+    font-weight: bold;
+}
+

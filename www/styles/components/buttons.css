@@ -1,0 +1,125 @@
+.btn {
+    border: 0.25em solid transparent;
+    border-radius: .25rem;
+    white-space: nowrap;
+    user-select: none;
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
+
+    transition: background-color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-transparent {
+    background-color: transparent;
+}
+
+.btn.btn-p0 {
+    padding: 0;
+}
+
+.btn-rounded {
+    border-radius: 50%;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* BTN-INFO */
+.btn-info {
+    background-color: var(--bootstrap-info);
+    color: var(--white);
+}
+
+.btn-info:hover{
+    background-color: var(--bootstrap-info-hover);
+}
+
+.btn-info:focus{
+    background-color: var(--bootstrap-info-hover);
+    border: solid var(--bootstrap-info) 0.25em;
+}
+
+/* BTN-DANGER */
+.btn-danger {
+    background-color: var(--bootstrap-danger);
+    color: var(--white);
+}
+
+.btn-danger:hover{
+    background-color: var(--bootstrap-danger-hover);
+}
+
+.btn-danger:focus{
+    background-color: var(--bootstrap-danger-hover);
+    border: solid var(--bootstrap-danger) 0.25em;
+}
+
+/* BTN-SUCCESS */
+.btn-success {
+    background-color: var(--bootstrap-success);
+    color: var(--white);
+}
+
+.btn-success:hover{
+    background-color: var(--bootstrap-success-hover);
+}
+
+.btn-success:focus{
+    background-color: var(--bootstrap-success-hover);
+    border: solid var(--bootstrap-success) 0.25em;
+}
+
+/* BTN-MORE */
+.btn-more {
+    background-color: var(--bootstrap-primary);
+    color: var(--white);
+}
+
+.btn-more:hover{
+    background-color: var(--bootstrap-primary-hover);
+}
+
+.btn-more:focus{
+    background-color: var(--bootstrap-primary-hover);
+    border: solid var(--bootstrap-primary) 0.25em;
+}
+
+/* FAB */
+.fab-button{
+    width: 50px;
+    height: 50px;
+
+    position: fixed;
+    right: 20px;
+    bottom: 40px;
+}
+
+.fab-button:hover{
+    transform: scale(1.1);
+}
+
+
+/******************************************************************************/
+/* Responsive */
+/* Responsive */
+@media only screen and ( max-width: 650px ){
+    .btn-more {
+        font-size: 0px;
+
+        border: 1px solid transparent;
+        border-radius: 50%;
+        padding: 0;
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn-more:after {
+        content: "+";
+        font-size: 24px;
+    }
+}

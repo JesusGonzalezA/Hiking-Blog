@@ -1,0 +1,55 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+{% use "components/grid_routes.html" %}
+{% use "components/recomendations.html" %}
+{% use "components/cover.html" %}
+{% use "components/go_up_button.html" %}
+
+    {% set body_class = 'grid-container' %}
+
+    {% block title %}
+        Calendario de senderismo
+    {% endblock %}
+
+    {% block styles %}    
+        {{ parent() }}
+        <link rel="stylesheet" href="./styles/cover.css" />
+        <link rel="stylesheet" href="./styles/components/card.css" />
+    {% endblock %}
+
+    {% block cover %}
+        {% block cover_component %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block header %}
+        {{ parent() }}
+         <!--Navigation-->
+         {% block navigation %}
+            {{ parent() }}
+         {% endblock %}
+    {% endblock %}
+
+    {% block main %}
+        {% block grid_routes %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block aside_content %}
+        {% block recomendations %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block go_up_button %}
+        {% block go_up %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block scripts %}
+        <script type="module" src="./src/components/buttons/goUpButton.js"></script>
+        <script type="module" src="./src/components/buttons/goDownButton.js"></script>    
+    {% endblock %}

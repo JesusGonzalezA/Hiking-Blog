@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/jpg" href="./assets/logo.jpg" />
+
+    <!-- Stylesheets -->
+    {% block styles %}
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/aside.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/animate.css" />
+    <link rel="stylesheet" href="./styles/components/buttons.css" />
+    <link rel="stylesheet" href="./styles/components/divider.css" />
+    <link rel="stylesheet" href="./styles/components/nav-bar.css" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" 
+        crossorigin="anonymous" 
+    />
+    {% endblock %}
+    <title>{% block title %}{% endblock %} </title>
+</head>
+<body class="{{body_class}}">
+
+    {% block cover %}
+    {% endblock %}
+    
+    <!--Header-->
+    <header class="mbbbb">
+    {% block header %}
+        <div class="title-section pp">
+            <img 
+                loading="lazy"
+                class="rounded mrrr"
+                src="./assets/logo.jpg"
+                alt="Logo"
+            />
+            <h1>Calendario <wbr> de&nbsp;senderismo</h1>
+        </div>
+    {% endblock %}
+    </header>
+
+    <!--Main routes-->
+    <main>
+    {% block main %}
+    {% endblock %}
+    </main>
+
+    {% block aside %}
+    <!-- Web map -->
+    <aside class="text-center">
+        {% block aside_content %}
+        {% endblock %}
+    </aside>    
+    {% endblock %}
+
+    {% block go_up_button %}
+    {% endblock %}
+
+    {% block footer %}
+    <!--Footer-->
+    <footer class="mttt mbbb">
+        <hr class="divider linear-gradient height-3" />
+
+        <p class="text-center">
+            Desarrollado por 
+            <a 
+                class="url"
+                href="https://github.com/JesusGonzalezA"
+                target="_blank"
+            ><i class="fab fa-github"></i>&nbsp;JesusGonzalezA</a> para SIBW
+        </p>
+    </footer>
+    {% endblock %}
+
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

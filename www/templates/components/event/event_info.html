@@ -1,0 +1,112 @@
+{% block event_info %}
+<div class="mtt ppp">
+    <iframe 
+            class="shadow"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3181.0128260180395!2d-3.5292350847008405!3d37.128609879882276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71e444d4d79f73%3A0x97ca2512e89bfcc6!2sLos%20Cahorros%2C%2018193%2C%20Granada!5e0!3m2!1ses!2ses!4v1615312280296!5m2!1ses!2ses"  
+            allowfullscreen="" 
+            loading="lazy"
+        ></iframe>
+
+        <div class="recomendaciones">
+            <p>&#128680; Recomendamos traer</p>
+            <ul>
+                <li><input type="checkbox"> Zapatillas de montaña</li>
+                <li><input type="checkbox"> Bañador</li>
+                <li><input type="checkbox"> Calzado acuático</li>
+                <li><input type="checkbox"> Gorra</li>
+                <li><input type="checkbox"> Proteción solar</li>
+            </ul>
+        </div>
+
+        <!--Comment section-->
+        <section class="mttt">
+            <button class="btn btn-info btn-block" id="show-comment-button">
+                <i class="fa fa-comment" aria-hidden="true"></i> Ver comentarios
+            </button>
+            
+            <div class="text-left mttt display-none" id="comments-container">
+                <div class="flex-container">
+                    <h2 class="flex-75 m-0"></h2>
+                    
+                    <button class="flex-25 btn btn-danger" id="hide-comment-button">
+                        <i class="far fa-times-circle" ></i> Cerrar
+                    </button>
+                </div>
+                <hr class="mbbbb" />
+
+                <button class="mbbb btn btn-block btn-success" id="add-comment-button">
+                    <i class="fas fa-pencil-alt"></i> Redactar
+                </button>
+
+                <div id="comments">
+                    <div class="comment">
+                        <div class="comment-title">
+                            <img 
+                                class="rounded" 
+                                src="../assets/avatars/avatar.png" 
+                                alt="Avatar"
+                            >
+                            <span class="comment-author">
+                                Jesús González Álvarez
+                            </span>
+                            <span class="comment-date">
+                                25-01-2021
+                            </span>
+                        </div>
+                        <p class="comment-content">Me ha gustado mucho la excursion</p>
+                    </div>
+                </div>
+
+                <div id="modal-form-comment" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>
+                                <i class="fas fa-pencil-alt"></i>
+                                Redactar
+                            </h2>
+                            <button id="close-modal" class="btn btn-p0 btn-transparent">
+                                <i class="far fa-times-circle" ></i> Cerrar
+                            </button>
+                        </div>
+
+                        <form class="modal-body" id="add-comment-form">
+                            <div class="flex-container mbb">
+                                <div class="flex-25">
+                                    <label for="name">Nombre:</label>
+                                </div>
+                                <div class="flex-75">
+                                    <input type="text" id="name" name="name"><br>
+                                </div>
+                            </div>
+
+                            <div class="flex-container mbb">
+                                <div class="flex-25">
+                                    <label for="email">Email:</label>
+                                </div>
+                                <div class="flex-75">
+                                    <input type="text" id="email" name="email"><br>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <textarea 
+                                    id="comment" 
+                                    placeholder="Comentario"
+                                    name="comment" 
+                                    rows="4" 
+                                    cols="50"
+                                ></textarea>
+                            </div>
+
+                            <button class="btn btn-block btn-success" id="submit-button">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+</div>
+{% endblock %}

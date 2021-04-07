@@ -1,0 +1,31 @@
+{% use "components/event/base_event.html" %}
+
+{% block event %}
+    <div class="mmm  ppppp">
+        {% block event_title %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block action %}
+            <a
+                href="evento_imprimir.php?ev={{ evento['id'] }}"
+                id="print"
+            >
+                <i class="fa fa-print" aria-hidden="true"></i>
+                Imprimir
+            </a>
+        {% endblock %}
+
+        {% block event_content %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block end %}
+            <div class="text-center mttt ppppp">
+                <button class="btn btn-more btn-block">
+                    Ver más
+                </button>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

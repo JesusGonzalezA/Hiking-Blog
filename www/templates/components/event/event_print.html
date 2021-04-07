@@ -1,0 +1,13 @@
+{% use "components/event/base_event.html" %}
+
+{% block event %}
+    <div class="mmm  ppppp">
+        {% block event_title %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block event_content %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

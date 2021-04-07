@@ -1,0 +1,43 @@
+
+/* Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Card */
+.card {
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card > img {
+    margin: 10px;
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+/* Card rate */
+.card.card-rate {
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid var(--op-primary);
+    border-radius: 0;
+}
+
+.card.card-rate > img {
+    margin: 0;
+    border-radius: 0px;
+}
+
+.card.card-rate:hover {
+    transform: scale(1);
+}

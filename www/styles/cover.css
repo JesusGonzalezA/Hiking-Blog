@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+#cover {
+    background-image: url(../assets/cover.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size:cover;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width:100%;
+    height: 100vh;
+}
+
+#cover:before{
+    content: "";
+}
+
+#div-button-down {
+    cursor:pointer;
+}
+
+#cover  .go-down-button {
+    background-color: transparent;
+    color: white;
+    font-size: 32px;
+}
+
+#cover > .quote-container {
+    text-align: center;
+}
+
+
+#cover  blockquote {
+    color: white;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 3rem;
+}
+
+
+/******************************************************************************/
+
+/* Responsive */
+@media only screen and ( max-width: 650px ){
+    #cover > blockquote {
+        font-size: 2rem;
+    }
+}

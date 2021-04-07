@@ -1,0 +1,40 @@
+/* Navigation bar*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+nav > ul > li {
+    width: 33.33%;
+    text-align: center;
+}
+
+nav > ul > li a {
+    display: block;
+    padding: 8px 16px;
+    color: var(--op-primary);
+}
+nav > ul > li > a.active {
+    background-color: var(--primary);
+    color: var(--white);
+}
+  
+nav > ul > li > a:hover:not(.active) {
+    background-color: var(--op-primary);
+    color: var(--white);
+}
+
+/******************************************************************************/
+/* Responsive */
+@media only screen and ( max-width: 600px ){
+    nav > ul > li {
+        width: 100%;
+    }
+}

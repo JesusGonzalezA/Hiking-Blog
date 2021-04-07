@@ -1,0 +1,11 @@
+USE SIBW;
+
+CREATE TABLE events
+( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    title VARCHAR(100) NOT NULL, 
+    place VARCHAR(100) NOT NULL, 
+    date DATE NOT NULL, 
+    author VARCHAR(100) NOT NULL,
+    description VARCHAR(3000)
+);
