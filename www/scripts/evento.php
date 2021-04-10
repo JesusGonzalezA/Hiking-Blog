@@ -6,7 +6,11 @@
   $event = getEvent($idEv);
   
   if ( $event ){
-    echo $twig->render('evento.html', ['evento' => $event]);
+    $comments = getComments($event['id']);
+    echo $twig->render('evento.html', [
+      'evento' => $event,
+      'comentarios' => $comments
+    ]);
   }
   else {
     echo $twig->render('404.html',[] );

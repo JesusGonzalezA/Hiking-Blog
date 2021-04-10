@@ -39,22 +39,24 @@
                 </button>
 
                 <div id="comments">
-                    <div class="comment">
-                        <div class="comment-title">
-                            <img 
-                                class="rounded" 
-                                src="/assets/avatars/avatar.png" 
-                                alt="Avatar"
-                            >
-                            <span class="comment-author">
-                                Jesús González Álvarez
-                            </span>
-                            <span class="comment-date">
-                                25-01-2021
-                            </span>
+                    {% for comentario in comentarios %}
+                        <div class="comment">
+                            <div class="comment-title">
+                                <img 
+                                    class="rounded" 
+                                    src="/assets/avatars/avatar.png" 
+                                    alt="Avatar"
+                                >
+                                <span class="comment-author">
+                                    {{ attribute(comentario, 0) }}
+                                </span>
+                                <span class="comment-date">
+                                    {{ attribute(comentario, 1) }}
+                                </span>
+                            </div>
+                            <p class="comment-content">{{ attribute(comentario, 2) }}</p>
                         </div>
-                        <p class="comment-content">Me ha gustado mucho la excursion</p>
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <div id="modal-form-comment" class="modal">
@@ -69,7 +71,12 @@
                             </button>
                         </div>
 
-                        <form class="modal-body" id="add-comment-form">
+                        <form 
+                            class="modal-body" 
+                            id="add-comment-form"
+                            action="add_comment.php"
+                            method="post"
+                        >
                             <div class="flex-container mbb">
                                 <div class="flex-25">
                                     <label for="name">Nombre:</label>

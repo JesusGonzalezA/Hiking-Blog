@@ -67,10 +67,10 @@ commentInput.onkeyup = validateComment;
 // Submit comment
 addCommentForm.onsubmit = (e) => {
     
-    e.preventDefault();
-
+    
     if ( !validateFields() )
     {
+        e.preventDefault();
         alert("Ha introducido los datos mal.");
         return;
     }
