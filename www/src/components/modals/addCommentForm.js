@@ -66,8 +66,6 @@ commentInput.onkeyup = validateComment;
 //**************************************************************************
 // Submit comment
 addCommentForm.onsubmit = (e) => {
-    
-    
     if ( !validateFields() )
     {
         e.preventDefault();
@@ -75,44 +73,5 @@ addCommentForm.onsubmit = (e) => {
         return;
     }
 
-    modal.style.display = "none";
-
-    const date = new Date();
-    const comment = document.createElement("div");
-    comment.classList.add("comment");
-    
-    const commentTitle = document.createElement("div");
-    commentTitle.classList.add("comment-title");
-
-    const commentImg = document.createElement("img");
-    commentImg.classList.add("rounded");
-    commentImg.src = "../assets/avatars/avatar.png";
-    commentImg.alt = "Avatar";
-    
-    const commentAuthor = document.createElement("span");
-    commentAuthor.classList.add("comment-author");
-    commentAuthor.innerText = nameInput.value;
-
-    const commentDate = document.createElement("span");
-    commentDate.classList.add("comment-date");
-    commentDate.innerText = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear() + ', '  + date.getHours() + ':' + date.getMinutes();
-
-    const commentContent = document.createElement("p");
-    commentContent.classList.add("comment-content");
-    commentContent.innerText = commentInput.value;
-
-    commentTitle.appendChild(commentImg);
-    commentTitle.appendChild(commentAuthor);
-    commentTitle.appendChild(commentDate);
-
-    comment.appendChild(commentTitle);
-    comment.appendChild(commentContent);
-
-    comments.appendChild(comment);
-
-    //--------------------------------------------------------------------------
     alert("Su reseña ha sido enviada con éxito");
-    nameInput.value = "";
-    emailInput.value = "";
-    commentInput.value = "";
 }

@@ -10,7 +10,9 @@
 
   $uri = $_SERVER['REQUEST_URI'];
 
-  if (startWith($uri, "/evento/imprimir") ) {
+  if (startWith($uri, "/add_comment.php")){
+    include("scripts/add_comment.php");
+  } else if (startWith($uri, "/evento/imprimir") ) {
     include("scripts/evento_imprimir.php");
   } else if (startWith($uri, "/evento")){
     include("scripts/evento.php");
