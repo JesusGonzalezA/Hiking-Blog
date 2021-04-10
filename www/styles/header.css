@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: url(../assets/header.jpg);
+    background-image: url(/assets/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
