@@ -42,9 +42,10 @@ const validateFields = () => {
 //**************************************************************************
 // Banned comment
 
-const invalidWords = [
-    'tonto', 'idiota', 'feo', 'cállate', 'imbécil', 'cr7', 'lorem', 'ipsum'
-]
+const invalidWords = document.cookie
+    .replace('banned_words=', '')
+    .split('.');
+
 
 
 const validateComment = () => {

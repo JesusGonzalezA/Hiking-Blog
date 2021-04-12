@@ -33,3 +33,12 @@ INSERT INTO events (title, place, date, author, description)
             spain-holiday.com');
  INSERT INTO events (title, place, date, author) 
     VALUES ('Alhama de Granada', 'Granada', NOW() + 1, 'Jesus Gonzalez');
+
+INSERT INTO banned_words(word) VALUES ('tonto');
+INSERT INTO banned_words(word) VALUES ('idiota');
+INSERT INTO banned_words(word) VALUES ('feo');
+INSERT INTO banned_words(word) VALUES ('callate');
+INSERT INTO banned_words(word) VALUES ('imbecil');
+INSERT INTO banned_words(word) VALUES ('cr');
+INSERT INTO banned_words(word) VALUES ('lorem');
+INSERT INTO banned_words(word) VALUES ('ipsum');

@@ -19,3 +19,9 @@ CREATE TABLE comments
     author VARCHAR(100) NOT NULL,
     FOREIGN KEY(idEvent) REFERENCES events(id)
 );
+
+CREATE TABLE banned_words
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    word VARCHAR(15) NOT NULL UNIQUE
+);

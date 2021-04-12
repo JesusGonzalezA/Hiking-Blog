@@ -4,6 +4,10 @@
   $resto = substr($uri, 8);
   $idEv = intval($resto); 
   $event = getEvent($idEv);
+  $banned = getBannedWords();
+
+  // Set cookie
+  setcookie("banned_words", implode(".", $banned) );
   
   if ( $event ){
     $comments = getComments($event['id']);

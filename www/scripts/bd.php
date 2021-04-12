@@ -51,4 +51,20 @@
 
       return $event;
     }
+
+    function getBannedWords() {
+      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
+
+      if ( $mysqli->connect_errno) {
+        echo ("Fallo al conectar: " . $mysqli->connect_errno);
+      } 
+      
+      $stmt = $mysqli->prepare("SELECT word FROM banned_words");
+      $stmt->execute();
+      $banned = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
+      $banned = array_map(function($word) {return $word[0];}, $banned);
+      return $banned;
+    }
 ?>
