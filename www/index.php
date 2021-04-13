@@ -17,7 +17,11 @@
   } else if (startWith($uri, "/evento")){
     include("scripts/evento.php");
   }else {
-    echo $twig->render('index.html', []);
+    include("scripts/bd.php");
+
+    $events = getEvents();
+    echo(print_r($events));
+    echo $twig->render('index.html', ['events' => $events]);
   }
 
 ?>

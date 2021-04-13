@@ -6,211 +6,23 @@
 
 <!--Cards-->
 <div class="card-container">
-
-    <!--1-Card-->
-    <a title="Los cahorros" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Los cahorros
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/cahorros.jpg"
-                alt="Los cahorros"
-            />
-            <p>
-                <b>Fecha:</b> 15 de Mayo
-            </p>
-        </div>
-    </a>
-
-    <!--2-Card-->
-    <a title="Alhama de Granada" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Alhama de Granada
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/alhama.jpg"
-                alt="Alhama de Granada"
-            />
-            <p>
-                <b>Fecha:</b> 31 de Mayo
-            </p>
-        </div>
-    </a>
-
-    <!--3-Card-->
-    <a title="Alicún" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Alicún
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/alicun.jpg"
-                alt="Alicún"
-            />
-            <p>
-                <b>Fecha:</b> 1 de Junio
-            </p>
-        </div>
-    </a>
-
-    <!--4-Card-->
-    <a title="Camino mozárabe" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Camino mozárabe
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/camino-mozarabe.jpeg"
-                alt="Camino mozárabe"
-            />
-            <p>
-                <b>Fecha:</b> 2 de Junio
-            </p>
-        </div>
-    </a>
-
-    <!--5-Card-->
-    <a title="Canal Espartera" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Canal Espartera
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/canal-espartera.jpg"
-                alt="Canal Espartera"
-            />
-            <p>
-                <b>Fecha:</b> 10 de Junio
-            </p>
-        </div>
-    </a>
-
-    <!--6-Card-->
-    <a title="Cerrada del río castril" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Cerrada del río castril
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/cerrada-rio-castril.jpg"
-                alt="Cerrada del río castril"
-            />
-            <p>
-                <b>Fecha:</b> 15 de Junio
-            </p>
-        </div>
-    </a>
-
-    <!--7-Card-->
-    <a title="Cerro del buitre" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Cerro del buitre
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/cerro-buitre.jpg"
-                alt="Cerro del buitre"
-            />
-            <p>
-                <b>Fecha:</b> 15 de Junio
-            </p>
-        </div>
-    </a>
-
-    <!--8-Card-->
-    <a title="Cerro huenes" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Cerro huenes
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/cerro-huenes.jpg"
-                alt="Cerro huenes"
-            />
-            <p>
-                <b>Fecha:</b> 17 de Junio
-            </p>
-        </div>
-    </a>
-
-    <!--9-Card-->
-    <a title="Circular atalaya" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Circular atalaya
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/circular-atalaya.jpg"
-                alt="Circular atalaya"
-            />
-            <p>
-                <b>Fecha:</b> 1 de Julio
-            </p>
-        </div>
-    </a>
-
-    <!--10-Card-->
-    <a title="Circular de Lanjarón" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Circular de Lanjarón
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/cahorros.jpg"
-                alt="Circular de Lanjarón"
-            />
-            <p>
-                <b>Fecha:</b> 15 de Julio
-            </p>
-        </div>
-    </a>
-
-    <!--11-Card-->
-    <a title="Pino Señora" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Pino Señora
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/pino-señora.jpg"
-                alt="Pino Señora"
-            />
-            <p>
-                <b>Fecha:</b> 15 de Agosto
-            </p>
-        </div>
-    </a>
-
-    <!--12-Card-->
-    <a title="Sierra de la Alfaguara" href="/evento/1">
-        <div class="card animate fadeIn text-center">
-            <h3>
-                Sierra de la Alfaguara
-            </h3>
-            <img
-                loading="lazy"
-                src="/assets/places/sierra-alfaguara.jpg"
-                alt="Sierra de la Alfaguara"
-            />
-            <p>
-                <b>Fecha:</b> 15 de Septiembre
-            </p>
-        </div>
-    </a>
-    
+    {% for evento in events %}
+        <a title={{attribute(evento, 2)}} href="/evento/{{ attribute(evento, 0) }}">
+            <div class="card animate fadeIn text-center">
+                <h3>
+                    {{attribute(evento, 2)}}
+                </h3>
+                <img
+                    loading="lazy"
+                    src={{ attribute(evento, 1)? attribute(evento, 1) : "/assets/No-image-available.png" }}
+                    alt={{ attribute(evento, 2) }}
+                />
+                <p>
+                    <b>Fecha:</b> {{ attribute(evento, 4) }}
+                </p>
+            </div>
+        </a>
+    {% endfor %}
 </div>
 
 <div class="text-center mttt ppppp">

@@ -1,7 +1,7 @@
 USE SIBW;
 
-INSERT INTO events (title, place, date, author, description) 
-    VALUES ('Los cahorros', 'Granada', NOW(), 'Jesus Gonzalez',
+INSERT INTO events (title, place, date, author, photo, description) 
+    VALUES ('Los cahorros', 'Granada', NOW(), 'Jesus Gonzalez', "/assets/places/cahorros.jpg",
             'El desfiladero de los Cahorros del río Monachil es un paraje de
             tenebrosas sacudidas geológicas y caprichosas esculturas 
             naturales, creadas por las imparables crecidas de la cuenca 
@@ -31,8 +31,28 @@ INSERT INTO events (title, place, date, author, description)
             su circunscripción, hay hasta un total de 7 con una descripción 
             excelente. Para más información en inglés leer este artículo de 
             spain-holiday.com');
- INSERT INTO events (title, place, date, author) 
-    VALUES ('Alhama de Granada', 'Granada', NOW() + 1, 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Alhama de Granada', 'Granada', NOW() + 1, "/assets/places/alhama.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Alicun', 'Granada', NOW() + 1, "/assets/places/alicun.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, author) 
+    VALUES ('Camino Mozarabe', 'Granada', NOW() + 1, 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Canal espartera', 'Granada', NOW() + 1, "/assets/places/canal-espartera.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Cerro buitre', 'Granada', NOW() + 1, "/assets/places/cerro-buitre.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Cerro huenes', 'Granada', NOW() + 1, "/assets/places/cerro-huenes.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Cerrada rio castril', 'Granada', NOW() + 1, "/assets/places/cerrada-rio-castril.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Circular atalaya', 'Granada', NOW() + 1, "/assets/places/circular-atalaya.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Circular Lanjarón', 'Granada', NOW() + 1, "/assets/places/circular-lanjaron.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Pino señora', 'Granada', NOW() + 1, "/assets/places/pino-señora.jpg", 'Jesus Gonzalez');
+INSERT INTO events (title, place, date, photo, author) 
+    VALUES ('Sierra Alfaguara', 'Granada', NOW() + 1, "/assets/places/sierra-alfaguara.jpg", 'Jesus Gonzalez');
 
 INSERT INTO banned_words(word) VALUES ('tonto');
 INSERT INTO banned_words(word) VALUES ('idiota');
