@@ -3,14 +3,24 @@
 
     $dotenv = \Dotenv\Dotenv::createImmutable( __DIR__, '.connection.env');
     $dotenv->load();
+    $mysqli = null;
 
-    function getEvent($idEv) {
-      
-      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
+    function startMySqli() {
+      $mysqli =  new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
 
       if ( $mysqli->connect_errno) {
         echo ("Fallo al conectar: " . $mysqli->connect_errno);
+        return null;
       } 
+
+      return $mysqli;
+    }
+
+    function getEvent($idEv) {
+      
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
       
       $stmt = $mysqli->prepare("SELECT id, title, date, author, description, photo FROM events WHERE id=?");
       $stmt->bind_param("i", $idEv);
@@ -22,11 +32,9 @@
     }
 
     function getEvents() {
-      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-
-      if ( $mysqli->connect_errno) {
-        echo ("Fallo al conectar: " . $mysqli->connect_errno);
-      } 
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }    
       
       $stmt = $mysqli->prepare("SELECT * FROM events");
       $stmt->execute();
@@ -37,11 +45,9 @@
     }
 
     function getComments($idEv) {
-      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-
-      if ( $mysqli->connect_errno) {
-        echo ("Fallo al conectar: " . $mysqli->connect_errno);
-      } 
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }     
       
       $stmt = $mysqli->prepare("SELECT author, date, comment, date description FROM comments WHERE idEvent=?");
       $stmt->bind_param("i", $idEv);
@@ -53,11 +59,9 @@
     }
 
     function addComment($idEvent, $comment, $author){
-      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-
-      if ( $mysqli->connect_errno) {
-        echo ("Fallo al conectar: " . $mysqli->connect_errno);
-      } 
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
       
       $stmt = $mysqli->prepare("INSERT INTO comments (idEvent, comment, date, author) VALUES (?,?,NOW(),?)");
       $stmt->bind_param("iss", $idEvent, $comment, $author);
@@ -68,11 +72,9 @@
     }
 
     function getBannedWords() {
-      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-
-      if ( $mysqli->connect_errno) {
-        echo ("Fallo al conectar: " . $mysqli->connect_errno);
-      } 
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
       
       $stmt = $mysqli->prepare("SELECT word FROM banned_words");
       $stmt->execute();
@@ -84,11 +86,9 @@
     }
 
     function getGallery ($idEvent) {
-      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-
-      if ( $mysqli->connect_errno) {
-        echo ("Fallo al conectar: " . $mysqli->connect_errno);
-      } 
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
       
       $stmt = $mysqli->prepare("SELECT photo FROM gallery WHERE idEvent=?");
       $stmt->bind_param("i", $idEvent);
