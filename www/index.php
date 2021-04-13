@@ -20,7 +20,6 @@
     include("scripts/bd.php");
 
     $events = getEvents();
-    echo(print_r($events));
     echo $twig->render('index.html', ['events' => $events]);
   }
 

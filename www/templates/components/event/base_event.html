@@ -20,30 +20,23 @@
         </p>
 
         <div class="images-container">
-            <img
-                class="shadow"
-                loading="lazy"
-                src="/assets/places/cahorros.jpg"
-                alt="Los cahorros"
-            />
-            <img
-                class="shadow"
-                loading="lazy"
-                src="/assets/places/cahorros.jpg"
-                alt="Los cahorros"
-            />
-            <img
-                class="shadow"
-                loading="lazy"
-                src="/assets/places/cahorros.jpg"
-                alt="Los cahorros"
-            />
-            <img
-                class="shadow"
-                loading="lazy"
-                src="/assets/places/cahorros.jpg"
-                alt="Los cahorros"
-            />
+            {% if evento['photo'] %}
+                <img
+                    class="shadow"
+                    loading="lazy"
+                    src={{ evento['photo'] }}
+                    alt={{ evento['title'] }}
+                />
+            {% endif %}
+
+            {% for image in gallery %}
+                <img
+                    class="shadow"
+                    loading="lazy"
+                    src={{ image }}
+                    alt={{ evento['title'] }}
+                />
+            {% endfor %}
         </div>
     </div>
     {% endblock %}

@@ -4,6 +4,7 @@
   $resto = substr($uri, 8);
   $idEv = intval($resto); 
   $event = getEvent($idEv);
+  $gallery = getGallery($idEv);
   $banned = getBannedWords();
 
   // Set cookie
@@ -13,7 +14,8 @@
     $comments = getComments($event['id']);
     echo $twig->render('evento.html', [
       'evento' => $event,
-      'comentarios' => $comments
+      'comentarios' => $comments,
+      'gallery' => $gallery
     ]);
   }
   else {

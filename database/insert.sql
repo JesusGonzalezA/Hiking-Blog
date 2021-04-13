@@ -62,3 +62,8 @@ INSERT INTO banned_words(word) VALUES ('imbecil');
 INSERT INTO banned_words(word) VALUES ('cr');
 INSERT INTO banned_words(word) VALUES ('lorem');
 INSERT INTO banned_words(word) VALUES ('ipsum');
+
+
+INSERT INTO gallery(idEvent, photo) VALUES (1,"/assets/places/pino-señora.jpg");
+INSERT INTO gallery(idEvent, photo) VALUES (1,"/assets/places/sierra-alfaguara.jpg");
+INSERT INTO gallery(idEvent, photo) VALUES (1,"/assets/places/circular-lanjaron.jpg");

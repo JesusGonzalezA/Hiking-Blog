@@ -82,4 +82,21 @@
       $banned = array_map(function($word) {return $word[0];}, $banned);
       return $banned;
     }
+
+    function getGallery ($idEvent) {
+      $mysqli = new mysqli("mysql", $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
+
+      if ( $mysqli->connect_errno) {
+        echo ("Fallo al conectar: " . $mysqli->connect_errno);
+      } 
+      
+      $stmt = $mysqli->prepare("SELECT photo FROM gallery WHERE idEvent=?");
+      $stmt->bind_param("i", $idEvent);
+      $stmt->execute();
+      $gallery = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
+      $gallery = array_map(function($image) {return $image[0];}, $gallery);
+      return $gallery;
+    }
 ?>
