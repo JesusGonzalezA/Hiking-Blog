@@ -34,3 +34,16 @@ CREATE TABLE gallery
     photo VARCHAR(50) NOT NULL,
     FOREIGN KEY(idEvent) REFERENCES events(id)
 );
+
+CREATE TABLE tags
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    description VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE tags_events
+(
+    idTag INT NOT NULL REFERENCES tags(id),
+    idEvent INT NOT NULL REFERENCES events(id),
+    PRIMARY KEY(idTag, idEvent)
+);
