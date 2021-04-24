@@ -67,3 +67,18 @@ INSERT INTO banned_words(word) VALUES ('ipsum');
 INSERT INTO gallery(idEvent, photo) VALUES (1,"/assets/places/pino-señora.jpg");
 INSERT INTO gallery(idEvent, photo) VALUES (1,"/assets/places/sierra-alfaguara.jpg");
 INSERT INTO gallery(idEvent, photo) VALUES (1,"/assets/places/circular-lanjaron.jpg");
+
+INSERT INTO tags(description) VALUES ("Familiar");
+INSERT INTO tags(description) VALUES ("Acuatica");
+INSERT INTO tags(description) VALUES ("Rural");
+INSERT INTO tags(description) VALUES ("Alta montana");
+INSERT INTO tags(description) VALUES ("Inicial");
+INSERT INTO tags(description) VALUES ("Intermedio");
+INSERT INTO tags(description) VALUES ("Avanzado");
+
+INSERT INTO tags_events(idTag, idEvent) VALUES (1,15);
+INSERT INTO tags_events(idTag, idEvent) VALUES (2,16);
+INSERT INTO tags_events(idTag, idEvent) VALUES (3,15);
+INSERT INTO tags_events(idTag, idEvent) VALUES (4,16);
+INSERT INTO tags_events(idTag, idEvent) VALUES (5,15);
+INSERT INTO tags_events(idTag, idEvent) VALUES (6,17);
