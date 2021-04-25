@@ -8,51 +8,12 @@
     ></iframe>
 
     <div class="tags-container mttt ppp">
-        <div class="tag-container">
+        {% for tag in tags %}
             <div class="tag">
-                Familiar
+                {{ tag }}
+                <div class="triangle-right"></div>
             </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
-        <div class="tag-container">
-            <div class="tag">
-                Familiar
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <div class="recomendaciones mttt ppp">
