@@ -33,6 +33,9 @@ body {
   --bootstrap-success: #24a13f;
   --bootstrap-success-hover: #218838;
 
+  --bootstrap-warning: #ffc107;
+  --bootstrap-warning-hover: #e0a800;
+
 }
 
 /* Sizes */
@@ -147,6 +150,10 @@ a.url:hover {
 
 .pr {
   padding-right: var(--s);
+}
+
+.prr {
+  padding-right: var(--l);
 }
 
 .p {

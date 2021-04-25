@@ -35,6 +35,11 @@
     padding-left: 60px;
 }
 
+.comment-admin {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 /* Modal */
 /* The Modal (background) */

@@ -64,6 +64,20 @@
                             </span>
                         </div>
                         <p class="comment-content">{{ attribute(comentario, 2) }}</p>
+                        
+                        <div class="comment-admin prr">
+                            <button
+                                class="btn m p btn-outlined-warning p"
+                            >
+                                Editar <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                                class="btn m p btn-outlined-danger"
+                            >
+                                Eliminar <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+
                     </div>
                 {% endfor %}
             </div>
