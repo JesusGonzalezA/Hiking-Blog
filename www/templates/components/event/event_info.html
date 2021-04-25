@@ -59,17 +59,22 @@
                         <p class="comment-content">
                             {{ attribute(comentario, 2) }}
                         </p>
-                        <p class="comment-edited">
-                            Editado por el moderador 
-                        </p>
                         
                         <div class="comment-admin prr">
                             <button
-                                class="btn m p btn-outlined-warning p edit-button"
-                                onclick="editComment('{{ attribute(comentario, 3)}}')"
+                                class="btn m p btn-outlined-warning edit-button"
+                                onclick="editComment('{{ loop.index }}')"
                             >
                                 Editar <i class="fas fa-edit"></i>
                             </button>
+                            
+                            <button 
+                                class="btn m p display-none btn-outlined-success save-button"
+                                onclick="saveComment()"
+                            >
+                                Save <i class="fas fa-save"></i>
+                            </button>
+
                             <button
                                 class="btn m p btn-outlined-danger delete-button"
                             >

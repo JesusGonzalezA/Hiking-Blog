@@ -7,7 +7,6 @@
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     outline: none;
 
     transition: background-color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -97,6 +96,23 @@
 .btn-success:focus{
     background-color: var(--bootstrap-success-hover);
     border: solid var(--bootstrap-success) 0.25em;
+}
+
+.btn-outlined-success {
+    color: var(--bootstrap-success);
+    background-color: var(--white);
+    border: 1px solid var(--bootstrap-success);
+}
+
+.btn-outlined-success:hover{
+    background-color: var(--bootstrap-success-hover);
+    color: var(--white);
+}
+
+.btn-outlined-success:focus{
+    background-color: var(--bootstrap-success-hover);
+    border: solid var(--bootstrap-success) 0.25em;
+    color: var(--white);
 }
 
 /* BTN-MORE */
