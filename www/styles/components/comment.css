@@ -30,6 +30,11 @@
     border-radius: 50%;
 }
 
+.comment-edited {
+    padding-left: 60px;
+    font-style: italic;
+}
+
 .comment-content{
     display: block;
     padding-left: 60px;
