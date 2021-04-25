@@ -49,7 +49,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }     
       
-      $stmt = $mysqli->prepare("SELECT author, date, comment, date description FROM comments WHERE idEvent=?");
+      $stmt = $mysqli->prepare("SELECT author, date, comment, id FROM comments WHERE idEvent=?");
       $stmt->bind_param("i", $idEv);
       $stmt->execute();
       $comments = $stmt->get_result()->fetch_all();
