@@ -3,7 +3,21 @@
 {% block event %}
     <div class="mmm  ppppp">
         {% block event_title %}
-            {{ parent() }}
+            <div id="title-block" class="flex-container">
+                <div class="flex-25 mr-60">
+                    {{ parent() }}
+                </div>
+
+                <div class="flex-75 tag-container">
+                        {% for tag in tags %}
+                        <div class="tag shadow">
+                            {{ tag }}
+                            <div class="triangle-right"></div>
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+                
         {% endblock %}
 
         {% block action %}
