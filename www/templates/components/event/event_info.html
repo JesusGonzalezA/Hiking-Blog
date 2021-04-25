@@ -47,7 +47,7 @@
                 <i class="fas fa-pencil-alt"></i> Redactar
             </button>
 
-            <div id="comments">
+            <div id="comments" class="animate fadeIn">
                 {% for comentario in comentarios %}
                     <div class="comment">
                         <div class="comment-title">
@@ -63,7 +63,9 @@
                                 {{ attribute(comentario, 1) }}
                             </span>
                         </div>
-                        <p class="comment-content">{{ attribute(comentario, 2) }}</p>
+                        <p class="comment-content">
+                            {{ attribute(comentario, 2) }}
+                        </p>
                         
                         <div class="comment-admin prr">
                             <button
