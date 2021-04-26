@@ -60,6 +60,12 @@
                             {{ attribute(comentario, 2) }}
                         </p>
                         
+                        {% if attribute(comentario, 4) == 1 %}
+                            <p class="comment-edited">
+                                Editado por el moderador
+                            </p>
+                        {% endif %}
+
                         <div class="comment-admin prr">
                             <button
                                 class="btn m p btn-outlined-warning edit-button"

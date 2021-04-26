@@ -15,10 +15,4 @@ const editComment = ( index ) => {
     const saveButton = saveButtons[index-1]
     editButton.classList.add('display-none')
     saveButton.classList.remove('display-none')
-
-    // Edit note
-    const node = document.createElement("p")
-    node.classList.add("comment-edited")
-    node.innerHTML = "Editado por el moderador"
-    content.insertAdjacentElement("afterend",node)
 }
