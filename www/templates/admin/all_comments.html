@@ -1,0 +1,711 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+{% use "components/go_up_button.html" %}
+
+    {% set body_class = 'grid-container' %}
+
+    {% block title %}
+        {{ evento['title'] }}
+    {% endblock %}
+
+    {% block styles %}    
+        {{ parent() }}
+        <link rel="stylesheet" href="/styles/admin/all_comments.css" />
+        <link rel="stylesheet" href="/styles/components/comment.css" />
+    {% endblock %}
+
+    {% block header %}
+        {{ parent() }}
+         <!--Navigation-->
+         {% block navigation %}
+            {{ parent() }}
+         {% endblock %}
+    {% endblock %}
+
+    {% block aside_content %}
+        <form class="mttt">
+            <input 
+                class="mtt pp" 
+                id="filter"
+                placeholder="Filtre por texto" 
+                type="text" 
+            />
+        </form>
+    {% endblock %}
+
+    {% block main %}
+        <div class="text-center">
+            <h1>Panel de administración</h1>
+        </div>
+            <div class="container">
+                <details>
+                    <summary class="mbbb">Evento 1</summary>
+                    
+                    <div class="comment mrrr">
+                        <div class="comment-title">
+                            <img 
+                            class="rounded" 
+                            src="/assets/avatars/avatar.png" 
+                            alt="Avatar"
+                            >
+                            <span class="comment-author">
+                                {{ attribute(comentario, 0) }}
+                            </span>
+                            <span class="comment-date">
+                                {{ attribute(comentario, 1) }}
+                            </span>
+                        </div>
+                        <p class="comment-content">
+                            {{ attribute(comentario, 2) }}
+                        </p>
+                        
+                        {% if attribute(comentario, 4) == 1 %}
+                        <p class="comment-edited">
+                            Editado por el moderador
+                        </p>
+                        {% endif %}
+                        
+                        <div class="comment-admin prr">
+                            <button
+                            class="btn m p btn-outlined-warning edit-button"
+                            onclick="editComment('{{ loop.index }}')"
+                            >
+                            Editar <i class="fas fa-edit"></i>
+                        </button>
+                        
+                        <button 
+                        class="btn m p display-none btn-outlined-success save-button"
+                        onclick="saveComment()"
+                        >
+                        Save <i class="fas fa-save"></i>
+                    </button>
+                    
+                    <button
+                    class="btn m p btn-outlined-danger delete-button"
+                    >
+                    Eliminar <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+                      
+    </details>
+    <details>
+        <summary class="mbbb">Evento 1</summary>
+        
+        <div class="comment mrrr">
+            <div class="comment-title">
+                <img 
+                class="rounded" 
+                src="/assets/avatars/avatar.png" 
+                alt="Avatar"
+                >
+                <span class="comment-author">
+                    {{ attribute(comentario, 0) }}
+                </span>
+                <span class="comment-date">
+                    {{ attribute(comentario, 1) }}
+                </span>
+            </div>
+            <p class="comment-content">
+                {{ attribute(comentario, 2) }}
+            </p>
+            
+            {% if attribute(comentario, 4) == 1 %}
+            <p class="comment-edited">
+                Editado por el moderador
+            </p>
+            {% endif %}
+            
+            <div class="comment-admin prr">
+                <button
+                class="btn m p btn-outlined-warning edit-button"
+                onclick="editComment('{{ loop.index }}')"
+                >
+                Editar <i class="fas fa-edit"></i>
+            </button>
+            
+            <button 
+            class="btn m p display-none btn-outlined-success save-button"
+            onclick="saveComment()"
+            >
+            Save <i class="fas fa-save"></i>
+        </button>
+        
+        <button
+        class="btn m p btn-outlined-danger delete-button"
+        >
+        Eliminar <i class="fa fa-trash"></i>
+    </button>
+</div>
+</div>
+
+</details>
+<details>
+    <summary class="mbbb">Evento 1</summary>
+    
+    <div class="comment mrrr">
+        <div class="comment-title">
+            <img 
+            class="rounded" 
+            src="/assets/avatars/avatar.png" 
+            alt="Avatar"
+            >
+            <span class="comment-author">
+                {{ attribute(comentario, 0) }}
+            </span>
+            <span class="comment-date">
+                {{ attribute(comentario, 1) }}
+            </span>
+        </div>
+        <p class="comment-content">
+            {{ attribute(comentario, 2) }}
+        </p>
+        
+        {% if attribute(comentario, 4) == 1 %}
+        <p class="comment-edited">
+            Editado por el moderador
+        </p>
+        {% endif %}
+        
+        <div class="comment-admin prr">
+            <button
+            class="btn m p btn-outlined-warning edit-button"
+            onclick="editComment('{{ loop.index }}')"
+            >
+            Editar <i class="fas fa-edit"></i>
+        </button>
+        
+        <button 
+        class="btn m p display-none btn-outlined-success save-button"
+        onclick="saveComment()"
+        >
+        Save <i class="fas fa-save"></i>
+    </button>
+    
+    <button
+    class="btn m p btn-outlined-danger delete-button"
+    >
+    Eliminar <i class="fa fa-trash"></i>
+</button>
+</div>
+</div>
+
+</details>
+<details>
+    <summary class="mbbb">Evento 1</summary>
+    
+    <div class="comment mrrr">
+        <div class="comment-title">
+            <img 
+            class="rounded" 
+            src="/assets/avatars/avatar.png" 
+            alt="Avatar"
+            >
+            <span class="comment-author">
+                {{ attribute(comentario, 0) }}
+            </span>
+            <span class="comment-date">
+                {{ attribute(comentario, 1) }}
+            </span>
+        </div>
+        <p class="comment-content">
+            {{ attribute(comentario, 2) }}
+        </p>
+        
+        {% if attribute(comentario, 4) == 1 %}
+        <p class="comment-edited">
+            Editado por el moderador
+        </p>
+        {% endif %}
+        
+        <div class="comment-admin prr">
+            <button
+            class="btn m p btn-outlined-warning edit-button"
+            onclick="editComment('{{ loop.index }}')"
+            >
+            Editar <i class="fas fa-edit"></i>
+        </button>
+        
+        <button 
+        class="btn m p display-none btn-outlined-success save-button"
+        onclick="saveComment()"
+        >
+        Save <i class="fas fa-save"></i>
+    </button>
+    
+    <button
+    class="btn m p btn-outlined-danger delete-button"
+    >
+    Eliminar <i class="fa fa-trash"></i>
+</button>
+</div>
+</div>
+
+</details>
+<details>
+    <summary class="mbbb">Evento 1</summary>
+    
+    <div class="comment mrrr">
+        <div class="comment-title">
+            <img 
+            class="rounded" 
+            src="/assets/avatars/avatar.png" 
+            alt="Avatar"
+            >
+            <span class="comment-author">
+                {{ attribute(comentario, 0) }}
+            </span>
+            <span class="comment-date">
+                {{ attribute(comentario, 1) }}
+            </span>
+        </div>
+        <p class="comment-content">
+            {{ attribute(comentario, 2) }}
+        </p>
+        
+        {% if attribute(comentario, 4) == 1 %}
+        <p class="comment-edited">
+            Editado por el moderador
+        </p>
+        {% endif %}
+        
+        <div class="comment-admin prr">
+            <button
+            class="btn m p btn-outlined-warning edit-button"
+            onclick="editComment('{{ loop.index }}')"
+            >
+            Editar <i class="fas fa-edit"></i>
+        </button>
+        
+        <button 
+        class="btn m p display-none btn-outlined-success save-button"
+                                onclick="saveComment()"
+                                >
+                                Save <i class="fas fa-save"></i>
+                            </button>
+                            
+                            <button
+                            class="btn m p btn-outlined-danger delete-button"
+                            >
+                            Eliminar <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+            </details>
+            <details>
+                <summary class="mbbb">Evento 1</summary>
+                
+                <div class="comment mrrr">
+                    <div class="comment-title">
+                        <img 
+                        class="rounded" 
+                        src="/assets/avatars/avatar.png" 
+                        alt="Avatar"
+                        >
+                        <span class="comment-author">
+                            {{ attribute(comentario, 0) }}
+                        </span>
+                        <span class="comment-date">
+                            {{ attribute(comentario, 1) }}
+                        </span>
+                    </div>
+                    <p class="comment-content">
+                        {{ attribute(comentario, 2) }}
+                    </p>
+                    
+                    {% if attribute(comentario, 4) == 1 %}
+                    <p class="comment-edited">
+                        Editado por el moderador
+                    </p>
+                    {% endif %}
+                    
+                    <div class="comment-admin prr">
+                        <button
+                        class="btn m p btn-outlined-warning edit-button"
+                        onclick="editComment('{{ loop.index }}')"
+                        >
+                        Editar <i class="fas fa-edit"></i>
+                    </button>
+                    
+                    <button 
+                    class="btn m p display-none btn-outlined-success save-button"
+                    onclick="saveComment()"
+                    >
+                    Save <i class="fas fa-save"></i>
+                </button>
+                
+                <button
+                class="btn m p btn-outlined-danger delete-button"
+                >
+                Eliminar <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+    
+</details>
+<details>
+    <summary class="mbbb">Evento 1</summary>
+    
+    <div class="comment mrrr">
+        <div class="comment-title">
+            <img 
+            class="rounded" 
+            src="/assets/avatars/avatar.png" 
+            alt="Avatar"
+            >
+            <span class="comment-author">
+                {{ attribute(comentario, 0) }}
+            </span>
+            <span class="comment-date">
+                {{ attribute(comentario, 1) }}
+            </span>
+        </div>
+        <p class="comment-content">
+            {{ attribute(comentario, 2) }}
+        </p>
+        
+        {% if attribute(comentario, 4) == 1 %}
+        <p class="comment-edited">
+            Editado por el moderador
+        </p>
+        {% endif %}
+        
+        <div class="comment-admin prr">
+            <button
+            class="btn m p btn-outlined-warning edit-button"
+            onclick="editComment('{{ loop.index }}')"
+            >
+            Editar <i class="fas fa-edit"></i>
+        </button>
+        
+        <button 
+        class="btn m p display-none btn-outlined-success save-button"
+        onclick="saveComment()"
+        >
+        Save <i class="fas fa-save"></i>
+    </button>
+    
+    <button
+    class="btn m p btn-outlined-danger delete-button"
+    >
+    Eliminar <i class="fa fa-trash"></i>
+</button>
+</div>
+</div>
+
+</details>
+<details>
+    <summary class="mbbb">Evento 1</summary>
+    
+    <div class="comment mrrr">
+        <div class="comment-title">
+            <img 
+            class="rounded" 
+            src="/assets/avatars/avatar.png" 
+            alt="Avatar"
+            >
+            <span class="comment-author">
+                {{ attribute(comentario, 0) }}
+            </span>
+            <span class="comment-date">
+                {{ attribute(comentario, 1) }}
+            </span>
+        </div>
+        <p class="comment-content">
+            {{ attribute(comentario, 2) }}
+        </p>
+        
+        {% if attribute(comentario, 4) == 1 %}
+        <p class="comment-edited">
+            Editado por el moderador
+        </p>
+        {% endif %}
+        
+        <div class="comment-admin prr">
+            <button
+            class="btn m p btn-outlined-warning edit-button"
+            onclick="editComment('{{ loop.index }}')"
+            >
+            Editar <i class="fas fa-edit"></i>
+        </button>
+        
+        <button 
+        class="btn m p display-none btn-outlined-success save-button"
+        onclick="saveComment()"
+        >
+        Save <i class="fas fa-save"></i>
+                            </button>
+                            
+                            <button
+                            class="btn m p btn-outlined-danger delete-button"
+                            >
+                            Eliminar <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+            </details>
+            <details>
+                <summary class="mbbb">Evento 1</summary>
+                
+                <div class="comment mrrr">
+                    <div class="comment-title">
+                        <img 
+                        class="rounded" 
+                        src="/assets/avatars/avatar.png" 
+                        alt="Avatar"
+                        >
+                        <span class="comment-author">
+                            {{ attribute(comentario, 0) }}
+                        </span>
+                        <span class="comment-date">
+                            {{ attribute(comentario, 1) }}
+                        </span>
+                    </div>
+                    <p class="comment-content">
+                        {{ attribute(comentario, 2) }}
+                    </p>
+                    
+                    {% if attribute(comentario, 4) == 1 %}
+                    <p class="comment-edited">
+                        Editado por el moderador
+                    </p>
+                    {% endif %}
+                    
+                    <div class="comment-admin prr">
+                        <button
+                        class="btn m p btn-outlined-warning edit-button"
+                        onclick="editComment('{{ loop.index }}')"
+                        >
+                        Editar <i class="fas fa-edit"></i>
+                    </button>
+                    
+                    <button 
+                    class="btn m p display-none btn-outlined-success save-button"
+                    onclick="saveComment()"
+                    >
+                    Save <i class="fas fa-save"></i>
+                </button>
+                
+                <button
+                class="btn m p btn-outlined-danger delete-button"
+                >
+                Eliminar <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+            </details>
+            <details>
+                <summary class="mbbb">Evento 1</summary>
+                     
+                    <div class="comment mrrr">
+                        <div class="comment-title">
+                            <img 
+                                class="rounded" 
+                                src="/assets/avatars/avatar.png" 
+                                alt="Avatar"
+                            >
+                            <span class="comment-author">
+                                {{ attribute(comentario, 0) }}
+                            </span>
+                            <span class="comment-date">
+                                {{ attribute(comentario, 1) }}
+                            </span>
+                        </div>
+                        <p class="comment-content">
+                            {{ attribute(comentario, 2) }}
+                        </p>
+                        
+                        {% if attribute(comentario, 4) == 1 %}
+                            <p class="comment-edited">
+                                Editado por el moderador
+                            </p>
+                        {% endif %}
+
+                        <div class="comment-admin prr">
+                            <button
+                                class="btn m p btn-outlined-warning edit-button"
+                                onclick="editComment('{{ loop.index }}')"
+                            >
+                                Editar <i class="fas fa-edit"></i>
+                            </button>
+                            
+                            <button 
+                                class="btn m p display-none btn-outlined-success save-button"
+                                onclick="saveComment()"
+                            >
+                                Save <i class="fas fa-save"></i>
+                            </button>
+
+                            <button
+                                class="btn m p btn-outlined-danger delete-button"
+                            >
+                                Eliminar <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                      
+            </details>
+            <details>
+                <summary class="mbbb">Evento 1</summary>
+                     
+                    <div class="comment mrrr">
+                        <div class="comment-title">
+                            <img 
+                                class="rounded" 
+                                src="/assets/avatars/avatar.png" 
+                                alt="Avatar"
+                            >
+                            <span class="comment-author">
+                                {{ attribute(comentario, 0) }}
+                            </span>
+                            <span class="comment-date">
+                                {{ attribute(comentario, 1) }}
+                            </span>
+                        </div>
+                        <p class="comment-content">
+                            {{ attribute(comentario, 2) }}
+                        </p>
+                        
+                        {% if attribute(comentario, 4) == 1 %}
+                            <p class="comment-edited">
+                                Editado por el moderador
+                            </p>
+                        {% endif %}
+
+                        <div class="comment-admin prr">
+                            <button
+                                class="btn m p btn-outlined-warning edit-button"
+                                onclick="editComment('{{ loop.index }}')"
+                            >
+                                Editar <i class="fas fa-edit"></i>
+                            </button>
+                            
+                            <button 
+                                class="btn m p display-none btn-outlined-success save-button"
+                                onclick="saveComment()"
+                            >
+                                Save <i class="fas fa-save"></i>
+                            </button>
+
+                            <button
+                                class="btn m p btn-outlined-danger delete-button"
+                            >
+                                Eliminar <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                      
+            </details>
+            <details>
+                <summary class="mbbb">Evento 1</summary>
+                     
+                    <div class="comment mrrr">
+                        <div class="comment-title">
+                            <img 
+                                class="rounded" 
+                                src="/assets/avatars/avatar.png" 
+                                alt="Avatar"
+                            >
+                            <span class="comment-author">
+                                {{ attribute(comentario, 0) }}
+                            </span>
+                            <span class="comment-date">
+                                {{ attribute(comentario, 1) }}
+                            </span>
+                        </div>
+                        <p class="comment-content">
+                            {{ attribute(comentario, 2) }}
+                        </p>
+                        
+                        {% if attribute(comentario, 4) == 1 %}
+                            <p class="comment-edited">
+                                Editado por el moderador
+                            </p>
+                        {% endif %}
+
+                        <div class="comment-admin prr">
+                            <button
+                                class="btn m p btn-outlined-warning edit-button"
+                                onclick="editComment('{{ loop.index }}')"
+                            >
+                                Editar <i class="fas fa-edit"></i>
+                            </button>
+                            
+                            <button 
+                                class="btn m p display-none btn-outlined-success save-button"
+                                onclick="saveComment()"
+                            >
+                                Save <i class="fas fa-save"></i>
+                            </button>
+
+                            <button
+                                class="btn m p btn-outlined-danger delete-button"
+                            >
+                                Eliminar <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                      
+            </details>
+            <details>
+                <summary class="mbbb">Evento 1</summary>
+                    <div class="comment mrrr">
+                        <div class="comment-title">
+                            <img 
+                                class="rounded" 
+                                src="/assets/avatars/avatar.png" 
+                                alt="Avatar"
+                            >
+                            <span class="comment-author">
+                                {{ attribute(comentario, 0) }}
+                            </span>
+                            <span class="comment-date">
+                                {{ attribute(comentario, 1) }}
+                            </span>
+                        </div>
+                        <p class="comment-content">
+                            {{ attribute(comentario, 2) }}
+                        </p>
+                        
+                        {% if attribute(comentario, 4) == 1 %}
+                            <p class="comment-edited">
+                                Editado por el moderador
+                            </p>
+                        {% endif %}
+
+                        <div class="comment-admin prr">
+                            <button
+                                class="btn m p btn-outlined-warning edit-button"
+                                onclick="editComment('{{ loop.index }}')"
+                            >
+                                Editar <i class="fas fa-edit"></i>
+                            </button>
+                            
+                            <button 
+                                class="btn m p display-none btn-outlined-success save-button"
+                                onclick="saveComment()"
+                            >
+                                Save <i class="fas fa-save"></i>
+                            </button>
+
+                            <button
+                                class="btn m p btn-outlined-danger delete-button"
+                            >
+                                Eliminar <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+            </details>
+        </div>
+    {% endblock %}
+
+    {% block go_up_button %}
+        {% block go_up %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+    
+    {% block scripts %}
+    {% endblock %}

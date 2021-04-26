@@ -16,6 +16,12 @@
     include("scripts/evento_imprimir.php");
   } else if (startWith($uri, "/evento")){
     include("scripts/evento.php");
+  } else if (startWith($uri, "/admin/comentarios") ){
+    include("scripts/all_comments.php");
+  } else if (startWith($uri, "/login") ){
+    include("scripts/login.php");
+  } else if (startWith($uri, "/register")){
+    include("scripts/register.php");
   }else {
     include("scripts/bd.php");
 

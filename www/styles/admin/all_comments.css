@@ -1,0 +1,41 @@
+#filter {
+    font-size: inherit;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 80%;
+}
+
+#filter:not([type=button]){
+    margin-bottom: 10px;
+}
+
+#filter:focus {
+    outline: none;
+}
+
+#filter[type=button] {
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+details {
+    width: 500px;
+}
+
+/******************************************************************************/
+
+/* Responsive */
+@media only screen and ( max-width: 650px ){
+    .grid-container {
+        grid-template-areas: 
+        'cover cover'
+        'header header'
+        'aside aside'
+        'main main'
+        'footer footer';
+    }
+}
