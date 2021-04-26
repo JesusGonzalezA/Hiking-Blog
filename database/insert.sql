@@ -76,9 +76,9 @@ INSERT INTO tags(description) VALUES ("Inicial");
 INSERT INTO tags(description) VALUES ("Intermedio");
 INSERT INTO tags(description) VALUES ("Avanzado");
 
-INSERT INTO tags_events(idTag, idEvent) VALUES (1,15);
-INSERT INTO tags_events(idTag, idEvent) VALUES (2,16);
-INSERT INTO tags_events(idTag, idEvent) VALUES (3,15);
-INSERT INTO tags_events(idTag, idEvent) VALUES (4,16);
-INSERT INTO tags_events(idTag, idEvent) VALUES (5,15);
-INSERT INTO tags_events(idTag, idEvent) VALUES (6,17);
+INSERT INTO tags_events(idTag, idEvent) VALUES (1,1);
+INSERT INTO tags_events(idTag, idEvent) VALUES (2,1);
+INSERT INTO tags_events(idTag, idEvent) VALUES (3,1);
+INSERT INTO tags_events(idTag, idEvent) VALUES (4,2);
+INSERT INTO tags_events(idTag, idEvent) VALUES (5,2);
+INSERT INTO tags_events(idTag, idEvent) VALUES (6,2);

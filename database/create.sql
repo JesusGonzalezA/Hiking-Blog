@@ -7,7 +7,7 @@ CREATE TABLE events
     title VARCHAR(100) NOT NULL, 
     place VARCHAR(100) NOT NULL, 
     date DATE NOT NULL, 
-    author VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL REFERENCES users(email),
     description VARCHAR(3000)
 );
 
@@ -17,7 +17,8 @@ CREATE TABLE comments
     idEvent INT NOT NULL,
     comment VARCHAR(300) NOT NULL,
     date DATE NOT NULL, 
-    author VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL REFERENCES users(email),
+    isEdited BOOLEAN DEFAULT(FALSE) NOT NULL,
     FOREIGN KEY(idEvent) REFERENCES events(id)
 );
 
@@ -46,4 +47,11 @@ CREATE TABLE tags_events
     idTag INT NOT NULL REFERENCES tags(id),
     idEvent INT NOT NULL REFERENCES events(id),
     PRIMARY KEY(idTag, idEvent)
+);
+
+CREATE TABLE users 
+(
+    idUser INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(20) NOT NULL
 );

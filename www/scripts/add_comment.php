@@ -25,6 +25,6 @@
         return;
     }
     $comment = $_POST['comment'];
-    addComment($_GET['ev'], $comment, $name);
+    addComment($_GET['ev'], $comment, $email);
     header('Location:/evento/' . $_GET['ev']);
 ?>
