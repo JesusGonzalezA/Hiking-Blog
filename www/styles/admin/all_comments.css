@@ -1,29 +1,50 @@
 #filter {
-    font-size: inherit;
-    border: 1px solid black;
-    border-radius: 10px;
     width: 80%;
-}
-
-#filter:not([type=button]){
-    margin-bottom: 10px;
-}
-
-#filter:focus {
-    outline: none;
-}
-
-#filter[type=button] {
-    margin-top: 10px;
+    height: 20px;
+    border: 1px solid black;
     border-radius: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+#search-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#input_filter {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: inherit;
+    border: none;
+}
+
+#input_filter:focus-visible {
+    outline: none;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
 }
+
 details {
     width: 500px;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    margin: 10px;
+    padding: 20px;
+}
+
+.comment {
+    margin-top: 10px;
 }
 
 /******************************************************************************/
