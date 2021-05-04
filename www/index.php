@@ -10,19 +10,29 @@
 
   $uri = $_SERVER['REQUEST_URI'];
 
+  // Events
   if (startWith($uri, "/add_comment.php")){
     include("scripts/add_comment.php");
   } else if (startWith($uri, "/evento/imprimir") ) {
     include("scripts/evento_imprimir.php");
   } else if (startWith($uri, "/evento")){
     include("scripts/evento.php");
-  } else if (startWith($uri, "/admin/comentarios") ){
+  } 
+  // Admin
+  else if (startWith($uri, "/admin/comentarios") ){
     include("scripts/all_comments.php");
-  } else if (startWith($uri, "/login") ){
+  } 
+  else if (startWith($uri, "/admin/usuarios") ){
+    include("scripts/all_users.php");
+  }
+  // Login
+  else if (startWith($uri, "/login") ){
     include("scripts/login.php");
   } else if (startWith($uri, "/register")){
     include("scripts/register.php");
-  }else {
+  } 
+  // Default
+  else {
     include("scripts/bd.php");
 
     $events = getEvents();

@@ -1,0 +1,75 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+{% use "components/go_up_button.html" %}
+
+    {% set body_class = 'grid-container' %}
+
+    {% block title %}
+        {{ evento['title'] }}
+    {% endblock %}
+
+    {% block styles %}    
+        {{ parent() }}
+        <link rel="stylesheet" href="/styles/admin/admin.css" />
+    {% endblock %}
+
+    {% block header %}
+        {{ parent() }}
+         <!--Navigation-->
+         {% block navigation %}
+            {{ parent() }}
+         {% endblock %}
+    {% endblock %}
+
+    {% block aside_content %}
+        <form class="mttt form">
+            <div id="filter">
+                <i id="search-icon" class="fa fa-search" aria-hidden="true"></i>
+                <input 
+                id="input_filter"
+                placeholder="Filtre por texto" 
+                type="text" 
+                />
+            </div>
+        </form>
+    {% endblock %}
+
+    {% block main %}
+        <div class="text-center">
+            <h1>Panel de administración - Gestión de usuarios</h1>
+        </div>
+            <ul class="container ppp">
+                <li class="shadow">
+                    <p>Usuario</p>
+                    <div class="comment-admin prr">
+                        <button
+                            class="btn btn-rounded  m p btn-outlined-warning edit-button"
+                        >
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    
+                        <button 
+                            class="btn btn-rounded m p display-none btn-outlined-success save-button"
+                        >
+                            <i class="fas fa-save"></i>
+                        </button>
+                
+                        <button
+                            class="btn  btn-rounded m p btn-outlined-danger delete-button"
+                        >
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block go_up_button %}
+        {% block go_up %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+    
+    {% block scripts %}
+    {% endblock %}

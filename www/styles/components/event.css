@@ -37,16 +37,6 @@
     height: 20px;
 }
 
-.tag:before {
-    background: var(--bootstrap-info);
-    width: 10px;
-    height: 10px;
-    content: "";
-    display: inline-block;
-    border-radius: 20px;
-    margin: 0 5px 0 0;
-}
-
 
 .triangle-right {
     top: -2px;

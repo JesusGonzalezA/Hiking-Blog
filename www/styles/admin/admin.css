@@ -47,16 +47,34 @@ details {
     margin-top: 10px;
 }
 
-/******************************************************************************/
-
-/* Responsive */
-@media only screen and ( max-width: 650px ){
-    .grid-container {
-        grid-template-areas: 
-        'cover cover'
-        'header header'
-        'aside aside'
-        'main main'
-        'footer footer';
-    }
+ul.container {
+    background-color: white;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
+
+ul.container > li {
+    width: 400px;
+    max-width: 90%;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    position: relative;
+}
+
+li > p {
+    display: inline;
+    left: 20px;
+    top: 0px;
+    position: absolute;
+}
+
+li > .comment-admin {
+    position: absolute;
+    right: 0px;
+    display: inline;
+}
+
+/******************************************************************************/
