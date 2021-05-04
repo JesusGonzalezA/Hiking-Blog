@@ -67,8 +67,6 @@
       $stmt->bind_param("iss", $idEvent, $comment, $author);
       $stmt->execute();
       $stmt->close();
-
-      return $event;
     }
 
     function getBannedWords() {
@@ -114,4 +112,44 @@
       $tags = array_map(function($tag) {return $tag[0];}, $tags);
       return $tags;
     }
+
+    function getUsers() {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }    
+      
+      $stmt = $mysqli->prepare("SELECT * FROM users");
+      $stmt->execute();
+      $users = $stmt->get_result()->fetch_all();
+      $stmt->close();
+      
+      return $users;
+    }
+
+    function getUser($email) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $stmt = $mysqli->prepare("SELECT * FROM users WHERE email=?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $user = $stmt->get_result()->fetch_assoc();
+      $stmt->close();
+
+      return $user;
+    }
+
+    function addUser($email, $name, $password) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+      $password = password_hash( $password, PASSWORD_DEFAULT );
+
+      $stmt = $mysqli->prepare("INSERT INTO users (email, name, password) VALUES (?,?,?)");
+      $stmt->bind_param("sss", $email, $name, $password);
+      $stmt->execute();
+      $stmt->close();
+    }
+
 ?>

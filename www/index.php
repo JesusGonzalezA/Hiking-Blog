@@ -30,7 +30,9 @@
     include("scripts/login.php");
   } else if (startWith($uri, "/register")){
     include("scripts/register.php");
-  } 
+  } else if (startWith($uri, "/add_user.php")){
+    include("scripts/add_user.php");
+  }
   // Default
   else {
     include("scripts/bd.php");

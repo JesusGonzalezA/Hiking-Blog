@@ -29,7 +29,7 @@ form > input {
     width: 80%;
 }
 
-form > input:not([type=button]){
+form > input:not([type=submit]){
     margin-bottom: 10px;
 }
 
@@ -37,7 +37,7 @@ form > input:focus {
     outline: none;
 }
 
-form > input[type=button] {
+form > input[type=submit] {
     margin-top: 10px;
     border-radius: 20px;
 }

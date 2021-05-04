@@ -19,35 +19,38 @@
         
         <p>¿Ya está registrado? <a href="/login">Entre aquí</a></p>
 
-        <form>
+        <form action="/add_user.php" method="POST">
             <input 
                 placeholder="Email"
-                type="email" 
-                required 
+                name="email"
+                type="email"
             />
             <input 
                 placeholder="Nombre"
-                type="text" 
-                required 
+                name="name"
+                type="text"
             />
             <input 
                 placeholder="Contraseña"
-                type="password" 
-                required 
+                name="password"
+                type="password"
             />
             <input 
                 placeholder="Repita su contraseña"
-                type="password" 
-                required 
+                name="password"
+                type="password"
             />
             <input  
                 class="btn btn-info shadow"
-                type="button"
+                type="submit"
+                id="register-button"
                 value="Registrarme"
             />
 
         </form>
 
     </div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type="text/javascript" src="/src/components/register.js"></script>
 </body>
 </html>

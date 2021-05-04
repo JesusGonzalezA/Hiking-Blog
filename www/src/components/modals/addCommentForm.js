@@ -30,7 +30,6 @@ closeButton.onclick = () => {
 
 const validateFields = () => {
     
-
     if ( nameInput.value === "" || emailInput.value === "" || commentInput.value === "" )
         return false;
     
