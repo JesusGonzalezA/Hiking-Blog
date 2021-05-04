@@ -32,6 +32,8 @@
     include("scripts/register.php");
   } else if (startWith($uri, "/add_user.php")){
     include("scripts/add_user.php");
+  } else if (startWith($uri, "/login_user.php")){
+    include("scripts/login_user.php");
   }
   // Default
   else {

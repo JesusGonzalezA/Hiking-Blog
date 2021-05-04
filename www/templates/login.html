@@ -19,20 +19,21 @@
         
         <p>¿No está registrado? <a href="/register">Regístrese aquí</a></p>
 
-        <form>
+        <form action="/login_user.php" method="POST">
             <input 
                 placeholder="Email"
-                type="email" 
-                required 
+                type="email"
+                name="email"
             />
             <input 
                 placeholder="Contraseña"
-                type="password" 
-                required 
+                type="password"
+                name="password"
             />
             <input  
                 class="btn btn-info shadow"
-                type="button"
+                type="submit"
+                id="login-button"
                 value="Entrar"
             />
 
@@ -40,4 +41,6 @@
 
     </div>
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type="module" src="/src/components/login.js"></script>
 </html>

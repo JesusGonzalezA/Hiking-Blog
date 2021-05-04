@@ -1,7 +1,7 @@
-import { getCookie } from "../helpers/getCookie.js"
+import { getCookie } from '../helpers/getCookie.js'
 
-// Show an error if the user has already been registered
-const error = getCookie('error_register')
+// Show an error
+const error = getCookie("error_login")
 
 if ( error )
     Swal.fire({
@@ -11,10 +11,10 @@ if ( error )
     })
 
 // Check the form
-const button      = document.getElementById('register-button')
+const button      = document.getElementById('login-button')
 const emailInput  = document.getElementsByName('email')[0]
 const nameInput   = document.getElementsByName('name')[0]
-const passInputs  = document.getElementsByName('password')
+const passInput   = document.getElementsByName('password')[0]
 
 button.onclick = ( e ) => {
 
@@ -25,12 +25,8 @@ button.onclick = ( e ) => {
         error = "El email es requerido"
     else if ( !re.test(emailInput.value) )
         error = "El email no es correcto"
-    else if ( nameInput.value === '' )
-        error = "El nombre es requerido"
-    else if ( passInputs[0].value === '' )
+    else if ( passInputs.value === '' )
         error = "La contraseña es requerida"
-    else if ( passInputs[0].value !== passInputs[1].value )
-        error = "Las contraseñas deben de coincidir"
     
     if ( error ) {
         e.preventDefault()
