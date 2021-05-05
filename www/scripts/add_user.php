@@ -1,12 +1,13 @@
 <?php
     include("bd.php");
+    session_start();
     $uri = $_SERVER['REQUEST_URI'];
 
     if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
         header('Location:/register');
         exit();
     }
-
+    
     $email = $_POST['email'];
     $name = $_POST['name'];
     $password = $_POST['password'];
@@ -27,5 +28,6 @@
         setcookie( "error_register" ); 
 
     addUser($email, $name, $password);
+    $_SESSION['email'] = $user['email'];
     header('Location:/');
 ?>

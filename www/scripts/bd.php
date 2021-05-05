@@ -144,12 +144,13 @@
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
       }  
-      $password = password_hash( $password, PASSWORD_DEFAULT );
+      $encryptedPass = password_hash( $password, PASSWORD_DEFAULT );
 
       $stmt = $mysqli->prepare("INSERT INTO users (email, name, password) VALUES (?,?,?)");
-      $stmt->bind_param("sss", $email, $name, $password);
+      $stmt->bind_param("sss", $email, $name, $encryptedPass);
       $stmt->execute();
       $stmt->close();
+      $mysqli->next_result();
     }
 
 ?>

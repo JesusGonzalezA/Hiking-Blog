@@ -1,14 +1,18 @@
+import { deleteCookie } from "../helpers/deleteCookie.js"
 import { getCookie } from "../helpers/getCookie.js"
 
 // Show an error if the user has already been registered
 const error = getCookie('error_register')
 
-if ( error )
+if ( error ) {
     Swal.fire({
         title: 'Error',
         text: error,
         icon: 'error'
     })
+
+    deleteCookie('error_register')
+}
 
 // Check the form
 const button      = document.getElementById('register-button')
@@ -40,8 +44,7 @@ button.onclick = ( e ) => {
             text: error,
             icon: 'error'
         })
-    }
-    
+    } 
 }
 
 
