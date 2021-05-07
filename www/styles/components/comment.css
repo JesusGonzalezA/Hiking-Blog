@@ -7,11 +7,18 @@
 }
 
 .comment-title {
-    display: block;
-    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     height: 50px;
     font-size: 16px;
-    line-height: 50px;
+}
+
+.comment-title > span {
+    margin-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .comment-author{
@@ -19,12 +26,10 @@
 }
 
 .comment-date {
-    display: inline-block;
-    margin-left: 10px;
+    font-style: italic;
+    margin: 0;
 }
 .comment-title img{
-    float: left;
-    margin: 0 10px 0 -25px;
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -128,13 +133,4 @@
 
 textarea {
     resize: none;
-}
-
-/******************************************************************************/
-/* Responsive */
-@media only screen and ( max-width: 1325px ){
-    
-    .comment-date {
-        display: none;
-    }
 }

@@ -52,14 +52,16 @@
                             <span class="comment-author">
                                 {{ attribute(comentario, 0) }}
                             </span>
-                            <span class="comment-date">
-                                {{ attribute(comentario, 1) }}
-                            </span>
                         </div>
-                        <p class="comment-content">
-                            {{ attribute(comentario, 2) }}
-                        </p>
-                        
+                        <div class="comment-content">
+                            <p class="comment-date">
+                                {{ attribute(comentario, 1) }}
+                            </p>
+                            <p>
+                                {{ attribute(comentario, 2) }}
+                            </p>
+                        </div>
+                            
                         {% if attribute(comentario, 4) == 1 %}
                             <p class="comment-edited">
                                 Editado por el moderador
