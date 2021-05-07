@@ -41,10 +41,10 @@ const validateFields = () => {
 //**************************************************************************
 // Banned comment
 
-const invalidWords = document.cookie
-    .replace('banned_words=', '')
-    .split('.');
-
+const invalidWords = document
+                        .getElementById('banned').dataset.banned
+                        .replaceAll("\"","")
+                        .split(';')
 
 
 const validateComment = () => {

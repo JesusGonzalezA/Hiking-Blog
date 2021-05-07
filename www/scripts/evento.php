@@ -8,16 +8,14 @@
   $tags    = getTags($idEv); 
   $banned  = getBannedWords();
 
-  // Set cookie
-  setcookie("banned_words", implode(".", $banned) );
-  
   if ( $event ){
     $comments = getComments($event['id']);
     echo $twig->render('evento.html', [
       'evento' => $event,
       'comentarios' => $comments,
       'gallery' => $gallery,
-      'tags' => $tags
+      'tags' => $tags,
+      'banned' => implode(";", $banned)
     ]);
   }
   else {

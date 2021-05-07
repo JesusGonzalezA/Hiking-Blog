@@ -31,6 +31,7 @@
     {% endblock %}
 
     {% block aside_content %}
+        <div id="banned" data-banned={{ banned | json_encode() }}></div>
         {% block event_info %}
             {{ parent() }}
         {% endblock %}
