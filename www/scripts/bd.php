@@ -36,7 +36,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }    
       
-      $stmt = $mysqli->prepare("SELECT * FROM events");
+      $stmt = $mysqli->prepare("SELECT id, photo, title, date FROM events");
       $stmt->execute();
       $events = $stmt->get_result()->fetch_all();
       $stmt->close();
@@ -118,7 +118,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }    
       
-      $stmt = $mysqli->prepare("SELECT * FROM users");
+      $stmt = $mysqli->prepare("SELECT idUser, name, email, isAdmin FROM users");
       $stmt->execute();
       $users = $stmt->get_result()->fetch_all();
       $stmt->close();
