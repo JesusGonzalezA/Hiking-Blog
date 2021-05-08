@@ -68,27 +68,30 @@
                             </p>
                         {% endif %}
 
-                        <div class="comment-admin prr">
-                            <button
-                                class="btn m p btn-outlined-warning edit-button"
-                                onclick="editComment('{{ loop.index }}')"
-                            >
-                                Editar <i class="fas fa-edit"></i>
-                            </button>
-                            
-                            <button 
-                                class="btn m p display-none btn-outlined-success save-button"
-                                onclick="saveComment()"
-                            >
-                                Save <i class="fas fa-save"></i>
-                            </button>
+                        {% if isAdmin %}
+                            <div class="comment-admin prr">
+                                <button
+                                    class="btn m p btn-outlined-warning edit-button"
+                                    onclick="editComment('{{ loop.index }}')"
+                                >
+                                    Editar <i class="fas fa-edit"></i>
+                                </button>
+                                
+                                <button 
+                                    class="btn m p display-none btn-outlined-success save-button"
+                                    onclick="saveComment('{{ loop.index }}')"
+                                >
+                                    Save <i class="fas fa-save"></i>
+                                </button>
 
-                            <button
-                                class="btn m p btn-outlined-danger delete-button"
-                            >
-                                Eliminar <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
+                                <button
+                                    class="btn m p btn-outlined-danger delete-button"
+                                    onclick="deleteComment('{{ loop.index }}')"
+                                >
+                                    Eliminar <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        {% endif %}
 
                     </div>
                 {% endfor %}

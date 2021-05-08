@@ -28,6 +28,6 @@
         setcookie( "error_register" ); 
 
     addUser($email, $name, $password);
-    $_SESSION['email'] = $user['email'];
+    $_SESSION['email'] = array($user['email'],$user['isAdmin']);
     header('Location:/');
 ?>

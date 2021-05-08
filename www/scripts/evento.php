@@ -1,5 +1,6 @@
 <?php
   include("bd.php");
+  session_start();
 
   $resto   = substr($uri, 8);
   $idEv    = intval($resto); 
@@ -7,15 +8,18 @@
   $gallery = getGallery($idEv);
   $tags    = getTags($idEv); 
   $banned  = getBannedWords();
+  $isAdmin = $_SESSION["email"][1];
 
   if ( $event ){
     $comments = getComments($event['id']);
+    
     echo $twig->render('evento.html', [
-      'evento' => $event,
+      'evento'      => $event,
       'comentarios' => $comments,
-      'gallery' => $gallery,
-      'tags' => $tags,
-      'banned' => implode(";", $banned)
+      'gallery'     => $gallery,
+      'tags'        => $tags,
+      'banned'      => implode(";", $banned),
+      'isAdmin'     => $isAdmin
     ]);
   }
   else {

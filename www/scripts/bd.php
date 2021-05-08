@@ -131,7 +131,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }      
       
-      $stmt = $mysqli->prepare("SELECT * FROM users WHERE email=?");
+      $stmt = $mysqli->prepare("SELECT name, email, password, isAdmin FROM users WHERE email=?");
       $stmt->bind_param("s", $email);
       $stmt->execute();
       $user = $stmt->get_result()->fetch_assoc();
