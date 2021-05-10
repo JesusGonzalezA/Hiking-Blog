@@ -4,6 +4,7 @@
     $users = getUsers();
 
     echo $twig->render('admin/all_users.html',[
-        'users' => $users
+        'users'   => $users,
+        'isAdmin' => true
     ] );
 ?>

@@ -33,6 +33,18 @@
                 href="/logout.php"
             ><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Salir</a>
         </li>
+        {% if isAdmin %}
+        <li>
+            <a 
+                href="/admin/comentarios"
+            ><i class="far fa-comments"></i> Admin- comentarios</a>
+        </li>
+        <li>
+            <a 
+                href="/admin/usuarios"
+            ><i class="fas fa-users"></i> Admin- usuarios</a>
+        </li>
+        {% endif %}
     </ul>
 </nav>
 {% endblock %}

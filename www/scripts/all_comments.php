@@ -5,6 +5,7 @@
     $eventsComments  = getAllComments();
     
     echo $twig->render('admin/all_comments.html',[
-        'eventsComments' => $eventsComments
+        'eventsComments' => $eventsComments,
+        'isAdmin'        => true
     ] );
 ?>

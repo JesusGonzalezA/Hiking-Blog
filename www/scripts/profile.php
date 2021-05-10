@@ -6,6 +6,7 @@
     $user = getUser($email);
     
     echo $twig->render('profile.html',[
-        'user' => $user
+        'user' => $user,
+        'isAdmin' => $_SESSION["email"][1]
     ] );
 ?>

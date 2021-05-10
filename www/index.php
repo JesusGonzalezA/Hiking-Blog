@@ -11,12 +11,26 @@
   
   $uri = $_SERVER['REQUEST_URI'];
   $unprotected = array("/login", "/register", "/add_user.php", "/login_user.php");
+  $admin       = array("/admin/comentarios", "/admin/usuarios");
 
+  // Proteger rutas 
   if (!$_SESSION["email"] && !in_array($uri, $unprotected) )
   {
     header('Location:/login');
     return;
   }
+
+  // Proteger rutas admin
+  if ( isset($_SESSION["email"]) ){
+    $isAdmin = $_SESSION["email"][1];
+
+    if ( !$isAdmin && in_array($uri, $admin) ) {
+      header('Location:/');
+      return;
+    }
+  }
+
+  // Router
 
   // Events
   if (startWith($uri, "/add_comment.php")){
@@ -56,9 +70,11 @@
   // Default
   else {
     include("scripts/bd.php");
-
     $events = getEvents();
-    echo $twig->render('index.html', ['events' => $events]);
+    echo $twig->render('index.html', [
+      'events'  => $events,
+      'isAdmin' => $isAdmin
+    ]);
   }
 
 ?>
