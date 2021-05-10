@@ -58,6 +58,25 @@
       return $comments;
     }
 
+    function getAllComments () {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }     
+      
+      // Get all events
+      $stmt = $mysqli->prepare("SELECT id, title FROM events");
+      $stmt->execute();
+      $events = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
+      // Get all comments
+      for ( $i = 0; $i < count($events); $i++) {
+        array_push($events[$i], getComments($events[$i][0]) );
+      }
+
+      return $events;
+    }
+
     function addComment($idEvent, $comment, $author){
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
