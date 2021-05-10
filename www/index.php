@@ -33,6 +33,10 @@
   else if (startWith($uri, "/admin/usuarios") ){
     include("scripts/all_users.php");
   }
+  // Profile
+  else if (startWith($uri, "/perfil") ){
+    include("scripts/profile.php");
+  }
   // Login - Register
   else if (startWith($uri, "/add_user.php")){
     include("scripts/add_user.php");

@@ -1,0 +1,41 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+
+    {% block title %}
+        Mi perfil
+    {% endblock %}
+
+    {% block styles %}    
+        {{ parent() }}
+    {% endblock %}
+
+    {% block header %}
+        {{ parent() }}
+         <!--Navigation-->
+         {% block navigation %}
+            {{ parent() }}
+         {% endblock %}
+    {% endblock %}
+
+    {% block main %}
+        <div class="mmm text-center">
+            <h1>Mi perfil</h1>
+            <hr class="hr-80" />
+            
+            <div class="personal-info ppp text-left ml-10">
+                <p><span class="bold">Nombre: </span>  {{ user['name'] }} </p>
+                <p><span class="bold">Email: </span> {{ user['email'] }}</p>
+                <p class="mbbbb">
+                    <span class="bold">Rol: </span> 
+                    {{ user['isAdmin']? "Administrador" : "Registrado" }}
+                </p>
+
+                <button class="btn btn-outlined-danger">Cambiar contraseña</button>
+                <button class="btn btn-outlined-warning">Cambiar información personal</button>
+            </div>
+        </div>
+    {% endblock %}
+
+    
+    {% block scripts %}
+    {% endblock %}
