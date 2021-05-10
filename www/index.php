@@ -37,6 +37,9 @@
   else if (startWith($uri, "/perfil") ){
     include("scripts/profile.php");
   }
+  else if (startWith($uri, "/change_user_info.php") ){
+    include("scripts/change_user_info.php");
+  }
   // Login - Register
   else if (startWith($uri, "/add_user.php")){
     include("scripts/add_user.php");

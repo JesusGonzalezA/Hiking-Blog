@@ -150,7 +150,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }      
       
-      $stmt = $mysqli->prepare("SELECT name, email, password, isAdmin FROM users WHERE email=?");
+      $stmt = $mysqli->prepare("SELECT name, email, password, isAdmin, idUser FROM users WHERE email=?");
       $stmt->bind_param("s", $email);
       $stmt->execute();
       $user = $stmt->get_result()->fetch_assoc();
@@ -170,6 +170,36 @@
       $stmt->execute();
       $stmt->close();
       $mysqli->next_result();
+    }
+
+    function changeUser( $idUser, $name, $email ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $stmt = $mysqli->prepare("UPDATE users SET name=?, email=? WHERE idUser=?");
+      $stmt->bind_param("ssi", $name, $email, $idUser);
+      $stmt->execute();
+      $stmt->close();
+
+      // Update session
+      session_start();
+      $isAdmin = $_SESSION['email'];
+      unset($_SESSION['email']);
+      $_SESSION["email"] = array( $email, $isAdmin );
+    }
+    
+    function changePass( $idUser, $password ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $encryptedPass = password_hash( $password, PASSWORD_DEFAULT );
+
+      $stmt = $mysqli->prepare("UPDATE users SET password=? WHERE idUser=?");
+      $stmt->bind_param("si", $encryptedPass,  $idUser );
+      $stmt->execute();
+      $stmt->close();
     }
 
 ?>

@@ -7,6 +7,7 @@
 
     {% block styles %}    
         {{ parent() }}
+        <link rel="stylesheet" href="/styles/components/modal.css" />
     {% endblock %}
 
     {% block header %}
@@ -30,12 +31,108 @@
                     {{ user['isAdmin']? "Administrador" : "Registrado" }}
                 </p>
 
-                <button class="btn btn-outlined-danger">Cambiar contraseña</button>
-                <button class="btn btn-outlined-warning">Cambiar información personal</button>
+                <button 
+                    class="btn btn-outlined-danger mbb"
+                    id="change-pass"
+                >Cambiar contraseña</button>
+                <button 
+                    class="btn btn-outlined-warning"
+                    id="change-info"
+                >Cambiar información personal</button>
+            </div>
+        </div>
+
+        <div id="modal-form-comment" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        <i class="fas fa-pencil-alt"></i>
+                        Editar perfil
+                    </h2>
+                    <button id="close-modal" class="btn btn-p0 btn-transparent">
+                        <i class="far fa-times-circle" ></i> Cerrar
+                    </button>
+                </div>
+
+                <form 
+                    class="modal-body" 
+                    id="form"
+                    action="/change_user_info.php"
+                    method="post"
+                >
+                    <div id="change-info-div">
+
+                        <div class="flex-container mbb">
+                            <div class="flex-25">
+                                <label for="name">Nombre:</label>
+                            </div>
+                            <div class="flex-75">
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name"
+                                    value={{ user['name'] }}
+                                ><br>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-container mbb">
+                            <div class="flex-25">
+                                <label for="email">Email:</label>
+                            </div>
+                            <div class="flex-75">
+                                <input 
+                                    type="text" 
+                                    id="email" 
+                                    name="email"
+                                    value={{ user['email'] }}
+                                >
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div id="change-pass-div">
+
+                        <div class="flex-container mbb">
+                            <div class="flex-25">
+                                <label for="email">Nueva contraseña:</label>
+                            </div>
+                            <div class="flex-75">
+                                <input 
+                                type="password" 
+                                id="password" 
+                                name="password"
+                                >
+                                <br>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-container mbb">
+                        <div class="flex-25">
+                            <label for="email">Repita la contraseña:</label>
+                        </div>
+                        <div class="flex-75">
+                            <input 
+                            type="password" 
+                            id="password2" 
+                            name="password"
+                            >
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                    
+                    <button class="btn btn-block btn-success" id="submit-button">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Guardar
+                    </button>
+
+                </form>
             </div>
         </div>
     {% endblock %}
 
     
     {% block scripts %}
+    <script type="module" src="/src/components/modals/infoUser.js"></script>
     {% endblock %}

@@ -1,28 +1,16 @@
+import { modal } from 'modal.js'
 
 // Get elements
-const closeButton = document.getElementById('close-modal');
 const addButton = document.getElementById('add-comment-button');
-const modal = document.getElementById('modal-form-comment');
 const addCommentForm = document.getElementById('add-comment-form');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const commentInput = document.getElementById('comment');
-const comments = document.getElementById('comments');
 
 //**************************************************************************
 // Open modal
 addButton.onclick = () => {
     modal.style.display = "flex";
-}
-    
-// Close modal
-window.onclick = (event) => {
-    if (event.target == modal) 
-        modal.style.display = "none";
-}
-
-closeButton.onclick = () => {
-    modal.style.display = "none";
 }
 
 
