@@ -53,10 +53,6 @@ const filter = ( ) => {
         detailsNode.style.display = "block"
         comment.style.display     = "block"
     })
-    //     // Show content
-    // resultsContent.map( (result) => {
-    //     comments.nodes[result].style.display = "block"
-    // })
 }
 
 input.addEventListener('change', () => filter( event ) )
