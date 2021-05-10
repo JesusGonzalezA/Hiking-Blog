@@ -46,7 +46,6 @@ const filter = ( ) => {
     // Show comments filtered by content
     resultsContent.map( (index) => {
         const comment     = comments.nodes[index]
-        console.log(comments.nodes[0].parentNode);
         
         const detailsNode = comment.parentNode
 
