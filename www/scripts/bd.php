@@ -137,7 +137,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }    
       
-      $stmt = $mysqli->prepare("SELECT idUser, name, email, isAdmin FROM users");
+      $stmt = $mysqli->prepare("SELECT idUser, email, isAdmin FROM users");
       $stmt->execute();
       $users = $stmt->get_result()->fetch_all();
       $stmt->close();

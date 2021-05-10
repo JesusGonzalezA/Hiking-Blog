@@ -39,28 +39,35 @@
             <h1>Panel de administración - Gestión de usuarios</h1>
         </div>
             <ul class="container ppp">
-                <li class="shadow">
-                    <p>Usuario</p>
-                    <div class="comment-admin prr">
-                        <button
-                            class="btn btn-rounded  m p btn-outlined-warning edit-button"
-                        >
-                            <i class="fas fa-edit"></i>
-                        </button>
+                {% for user in users %}
+                    <li class="shadow user mm">
+                        <p>
+                            <span class="bold">
+                                {{ attribute(user, 1) }} - <br>
+                            </span>
+                            {{ attribute(user,2)? 'Administrador' : 'Registrado' }}
+                        </p>
+                        <div class="comment-admin prr">
+                            <button
+                                class="btn btn-rounded  m p btn-outlined-warning edit-button"
+                            >
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        
+                            <button 
+                                class="btn btn-rounded m p display-none btn-outlined-success save-button"
+                            >
+                                <i class="fas fa-save"></i>
+                            </button>
                     
-                        <button 
-                            class="btn btn-rounded m p display-none btn-outlined-success save-button"
-                        >
-                            <i class="fas fa-save"></i>
-                        </button>
-                
-                        <button
-                            class="btn  btn-rounded m p btn-outlined-danger delete-button"
-                        >
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
-                </li>
+                            <button
+                                class="btn  btn-rounded m p btn-outlined-danger delete-button"
+                            >
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     {% endblock %}
