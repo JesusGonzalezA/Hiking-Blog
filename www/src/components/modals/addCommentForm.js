@@ -1,4 +1,4 @@
-import { modal } from 'modal.js'
+import { modal } from './modal.js'
 
 // Get elements
 const addButton = document.getElementById('add-comment-button');
@@ -57,9 +57,19 @@ addCommentForm.onsubmit = (e) => {
     if ( !validateFields() )
     {
         e.preventDefault();
-        alert("Ha introducido los datos mal.");
+        
+        Swal.fire({
+            title: 'Error',
+            text: "Ha introducido los datos mal.",
+            icon: 'error'
+        })
+
         return;
     }
 
-    alert("Su reseña ha sido enviada con éxito");
+    Swal.fire({
+        title: 'Éxito',
+        text: "Su reseña ha sido enviada correctamente",
+        icon: 'success'
+    })
 }

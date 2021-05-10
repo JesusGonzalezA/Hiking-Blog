@@ -47,6 +47,12 @@
   else if (startWith($uri, "/admin/usuarios") ){
     include("scripts/all_users.php");
   }
+  else if (startWith($uri, "/delete_comment.php") ){
+    include("scripts/delete_comment.php");
+  }
+  else if (startWith($uri, "/update_comment.php") ){
+    include("scripts/update_comment.php");
+  }
   // Profile
   else if (startWith($uri, "/perfil") ){
     include("scripts/profile.php");

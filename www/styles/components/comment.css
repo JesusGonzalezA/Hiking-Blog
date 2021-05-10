@@ -50,3 +50,12 @@
     justify-content: flex-end;
 }
 
+.comment-content-info {
+    outline: none;
+    display: block;
+    margin-top: 5px;
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+}

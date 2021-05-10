@@ -2,7 +2,7 @@ const comments = {
     nodesSup: Array.from(document.getElementsByTagName('details')),
     nodes:    Array.from(document.getElementsByClassName('comment')),
     titles:   Array.from(document.getElementsByTagName('summary')),
-    content:  Array.from(document.getElementsByClassName('comment-content'))
+    content:  Array.from(document.getElementsByClassName('comment-content-info'))
 }
 
 const input = document.getElementById('input_filter')
@@ -16,7 +16,7 @@ const filter = ( ) => {
     // Filter by content
     const resultsContent = []
     comments.content.forEach( ( content, index ) => {
-        if (content.innerText.toLowerCase().includes( value.toLowerCase() ))
+        if (content.value.toLowerCase().includes( value.toLowerCase() ))
             resultsContent.push(index)
     })
 
@@ -46,7 +46,6 @@ const filter = ( ) => {
     // Show comments filtered by content
     resultsContent.map( (index) => {
         const comment     = comments.nodes[index]
-        
         const detailsNode = comment.parentNode
 
         detailsNode.style.display = "block"

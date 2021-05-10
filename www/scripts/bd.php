@@ -88,6 +88,28 @@
       $stmt->close();
     }
 
+    function updateComment( $idComment, $comment ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+
+      $stmt = $mysqli->prepare("UPDATE comments SET comment=?, isEdited=1 WHERE id=?");
+      $stmt->bind_param("si", $comment,  $idComment );
+      $stmt->execute();
+      $stmt->close();
+    }
+
+    function deleteComment ( $idComment ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+
+      $stmt = $mysqli->prepare("DELETE FROM comments WHERE id=?");
+      $stmt->bind_param("i", $idComment );
+      $stmt->execute();
+      $stmt->close();
+    }
+
     function getBannedWords() {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
@@ -200,6 +222,10 @@
       $stmt->bind_param("si", $encryptedPass,  $idUser );
       $stmt->execute();
       $stmt->close();
+    }
+
+    function changeUserRole ( $idUser, $role ) {
+
     }
 
 ?>

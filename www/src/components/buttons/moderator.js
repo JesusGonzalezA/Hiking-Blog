@@ -1,16 +1,17 @@
 
 //Get the button
 const commentsArr        = Array.from(document.getElementsByClassName("comment"))
-const commentsContentArr = Array.from(document.getElementsByClassName("comment-content"))
+const commentsContentArr = Array.from(document.getElementsByClassName("comment-content-info"))
 const editButtons        = Array.from(document.getElementsByClassName("edit-button"))
 const saveButtons        = Array.from(document.getElementsByClassName("save-button"))
 
 
-const editComment = ( index ) => {
-    
+const editComment = ( event, index ) => {
+    event.preventDefault()
+
     // Set editable
     const content = commentsContentArr[index-1]
-    content.contentEditable = true
+    content.readOnly = false
     content.focus()
 
     // Change button
@@ -20,23 +21,9 @@ const editComment = ( index ) => {
     saveButton.classList.remove('display-none')
 }
 
-const saveComment = ( index ) => {
+const deleteComment = ( event, idComment ) => {
+    event.preventDefault()
 
-    // Save 
-
-
-    // Change button
-    const editButton = editButtons[index-1]
-    const saveButton = saveButtons[index-1]
-    editButton.classList.remove('display-none')
-    saveButton.classList.add('display-none')
-}
-
-const deleteComment = ( index ) => {
-
-    const comment = commentsArr[index-1]
-
-    // Delete comment front
-    comment.remove()
-    
+    window.location.replace(`/delete_comment.php?comment=${ idComment }`)
+    location.reload()
 }

@@ -86,7 +86,7 @@
 
                                 <button
                                     class="btn m p btn-outlined-danger delete-button"
-                                    onclick="deleteComment('{{ loop.index }}')"
+                                    onclick="deleteComment( '{{ attribute(comentario,3) }}' )"
                                 >
                                     Eliminar <i class="fa fa-trash"></i>
                                 </button>
