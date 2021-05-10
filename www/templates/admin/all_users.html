@@ -43,8 +43,9 @@
                     <li class="shadow user mm">
                         <p>
                             <span class="bold">
-                                {{ attribute(user, 1) }} - <br>
+                                {{ attribute(user, 1) }}
                             </span>
+                            - <br>
                             {{ attribute(user,2)? 'Administrador' : 'Registrado' }}
                         </p>
                         <div class="comment-admin prr">
@@ -79,4 +80,5 @@
     {% endblock %}
     
     {% block scripts %}
+    <script type="text/javascript" src="/src/admin/filter-users.js"></script>
     {% endblock %}
