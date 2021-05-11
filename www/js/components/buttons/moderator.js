@@ -27,5 +27,4 @@ const deleteComment = ( event, idComment ) => {
     event.preventDefault()
 
     window.location.replace(`/delete_comment.php?comment=${ idComment }`)
-    location.reload()
 }

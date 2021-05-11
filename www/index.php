@@ -50,14 +50,20 @@
   else if (startWith($uri, "/admin/usuarios") ){
     include("php/pages/admin/all_users.php");
   }
+  else if (startWith($uri, "/admin/eventos") ){
+    include("php/pages/admin/all_events.php");
+  }
   else if (startWith($uri, "/delete_comment.php") ){
     include("php/scripts/delete_comment.php");
   }
   else if (startWith($uri, "/update_comment.php") ){
     include("php/scripts/update_comment.php");
   }
-  else if (startWith($uri, "/admin/eventos") ){
-    include("php/pages/admin/all_events.php");
+  else if (startWith($uri, "/delete_user.php") ){
+    include("php/scripts/delete_user.php");
+  }
+  else if (startWith($uri, "/change_user_role.php")){
+    include("php/scripts/change_user_role.php");
   }
   // Profile
   else if (startWith($uri, "/perfil") ){

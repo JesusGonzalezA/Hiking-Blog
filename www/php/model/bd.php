@@ -181,6 +181,20 @@
       return $user;
     }
 
+    function getUserById($idUser) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $stmt = $mysqli->prepare("SELECT name, email, role, idUser FROM users WHERE idUser=?");
+      $stmt->bind_param("i", $idUser);
+      $stmt->execute();
+      $user = $stmt->get_result()->fetch_assoc();
+      $stmt->close();
+
+      return $user;
+    }
+
     function addUser($email, $name, $password) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
@@ -192,6 +206,28 @@
       $stmt->execute();
       $stmt->close();
       $mysqli->next_result();
+    }
+
+    function deleteUser($idUser){
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $stmt = $mysqli->prepare("DELETE FROM users WHERE idUser=?");
+      $stmt->bind_param("i", $idUser);
+      $stmt->execute();
+      $stmt->close();
+    }
+
+    function changeRole( $idUser, $role) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $stmt = $mysqli->prepare("UPDATE users SET role=? WHERE idUser=?");
+      $stmt->bind_param("si", $role, $idUser);
+      $stmt->execute();
+      $stmt->close();
     }
 
     function changeUser( $idUser, $name, $email ) {
@@ -222,10 +258,6 @@
       $stmt->bind_param("si", $encryptedPass,  $idUser );
       $stmt->execute();
       $stmt->close();
-    }
-
-    function changeUserRole ( $idUser, $role ) {
-
     }
 
 ?>
