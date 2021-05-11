@@ -4,7 +4,7 @@
     {% set body_class = 'grid-container' %}
 
     {% block title %}
-        Mi perfil
+        Admin - Eventos
     {% endblock %}
 
     {% block styles %}    
@@ -99,10 +99,37 @@
             <h1>Panel de administración - Gestión de eventos</h1>
             <hr class="hr-80" />
         </div>
+        <ul class="container ppp">
+            {% for event in events %}
+                <li class="admin-event shadow user mm">
+                    <p class="admin-event-title">
+                        {{ attribute(event, 1) }}
+                    </p>
+
+                    <div class="comment-admin prr">    
+                        <button
+                            class="btn btn-rounded  m p btn-outlined-warning edit-button"
+                            class="edit-button"
+                            onclick="editEvent('{{loop.index}}')"
+                        >
+                            <i class="fas fa-edit"></i>
+                        </button>
+                
+                        <button
+                            class="btn  btn-rounded m p btn-outlined-danger delete-button"
+                            onclick="deleteEvent('{{ attribute(event, 0) }}')"
+                        >
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
     {% endblock %}
 
     
     {% block scripts %}
     <script type="module" src="/js/components/modals/addEvent.js"></script>
+    <script type="text/javascript" src="/js/admin/filter-events.js"></script>
     {% endblock %}

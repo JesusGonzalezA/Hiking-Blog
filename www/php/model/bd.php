@@ -44,6 +44,19 @@
       return $events;
     }
 
+    function getEventsBasicInfo () {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }    
+      
+      $stmt = $mysqli->prepare("SELECT id, title FROM events");
+      $stmt->execute();
+      $events = $stmt->get_result()->fetch_all();
+      $stmt->close();
+      
+      return $events;
+    }
+
     function getComments($idEv) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
