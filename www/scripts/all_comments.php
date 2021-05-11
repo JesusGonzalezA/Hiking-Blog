@@ -6,6 +6,6 @@
     
     echo $twig->render('admin/all_comments.html',[
         'eventsComments' => $eventsComments,
-        'isAdmin'        => true
+        'role'        => $_SESSION["email"][1]
     ] );
 ?>

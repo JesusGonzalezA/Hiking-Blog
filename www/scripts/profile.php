@@ -7,6 +7,6 @@
     
     echo $twig->render('profile.html',[
         'user' => $user,
-        'isAdmin' => $_SESSION["email"][1]
+        'role' => $_SESSION["email"][1]
     ] );
 ?>

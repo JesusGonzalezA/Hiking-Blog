@@ -1,5 +1,6 @@
 <?php
     include("bd.php");
+    session_start();
     $uri = $_SERVER['REQUEST_URI'];
 
     $name = $_POST['name'];
@@ -17,6 +18,7 @@
 
     if(!isset($_GET['ev']) 
         || !filter_var($email, FILTER_VALIDATE_EMAIL) 
+        || ( $email !== $_SESSION["email"][0] )
         || empty($comment)
         || empty($name)
         || $isBanned

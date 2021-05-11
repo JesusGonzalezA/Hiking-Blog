@@ -159,7 +159,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }    
       
-      $stmt = $mysqli->prepare("SELECT idUser, email, isAdmin FROM users");
+      $stmt = $mysqli->prepare("SELECT idUser, email, role FROM users");
       $stmt->execute();
       $users = $stmt->get_result()->fetch_all();
       $stmt->close();
@@ -172,7 +172,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }      
       
-      $stmt = $mysqli->prepare("SELECT name, email, password, isAdmin, idUser FROM users WHERE email=?");
+      $stmt = $mysqli->prepare("SELECT name, email, password, role, idUser FROM users WHERE email=?");
       $stmt->bind_param("s", $email);
       $stmt->execute();
       $user = $stmt->get_result()->fetch_assoc();
@@ -206,9 +206,9 @@
 
       // Update session
       session_start();
-      $isAdmin = $_SESSION['email'];
+      $role = $_SESSION['email'];
       unset($_SESSION['email']);
-      $_SESSION["email"] = array( $email, $isAdmin );
+      $_SESSION["email"] = array( $email, $role );
     }
     
     function changePass( $idUser, $password ) {

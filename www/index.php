@@ -11,7 +11,6 @@
   
   $uri = $_SERVER['REQUEST_URI'];
   $unprotected = array("/login", "/register", "/add_user.php", "/login_user.php");
-  $admin       = array("/admin/comentarios", "/admin/usuarios");
 
   // Proteger rutas 
   if (!$_SESSION["email"] && !in_array($uri, $unprotected) )
@@ -22,9 +21,13 @@
 
   // Proteger rutas admin
   if ( isset($_SESSION["email"]) ){
-    $isAdmin = $_SESSION["email"][1];
+    $role = $_SESSION["email"][1];
 
-    if ( !$isAdmin && in_array($uri, $admin) ) {
+    if ( 
+         ( $role !== "SUPER" ) && ($uri === "/admin/usuarios" ) 
+      || ( $role !== "SUPER" && $role !== "GESTOR" ) && ($uri === "/admin/nuevo_evento" )
+      || ( $role !== "SUPER" && $role !== "GESTOR" && $role !== "MODERADOR") && ($uri === "/admin/comentarios" )
+    ) {
       header('Location:/');
       return;
     }
@@ -53,6 +56,9 @@
   else if (startWith($uri, "/update_comment.php") ){
     include("scripts/update_comment.php");
   }
+  else if (startWith($uri, "/admin/nuevo_evento") ){
+    include("scripts/new_event.php");
+  }
   // Profile
   else if (startWith($uri, "/perfil") ){
     include("scripts/profile.php");
@@ -79,7 +85,7 @@
     $events = getEvents();
     echo $twig->render('index.html', [
       'events'  => $events,
-      'isAdmin' => $isAdmin
+      'role' => $role
     ]);
   }
 

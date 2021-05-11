@@ -8,7 +8,8 @@
   $gallery = getGallery($idEv);
   $tags    = getTags($idEv); 
   $banned  = getBannedWords();
-  $isAdmin = $_SESSION["email"][1];
+  $role = $_SESSION["email"][1];
+  $user = getUser($_SESSION["email"][0]);
 
   if ( $event ){
     $comments = getComments($event['id']);
@@ -19,7 +20,8 @@
       'gallery'     => $gallery,
       'tags'        => $tags,
       'banned'      => implode(";", $banned),
-      'isAdmin'     => $isAdmin
+      'role'        => $role,
+      'user'        => array($user['email'], $user['name'] )
     ]);
   }
   else {

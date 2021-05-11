@@ -33,17 +33,26 @@
                 href="/logout.php"
             ><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Salir</a>
         </li>
-        {% if isAdmin %}
-        <li>
-            <a 
-                href="/admin/comentarios"
-            ><i class="far fa-comments"></i> Admin- comentarios</a>
-        </li>
-        <li>
-            <a 
-                href="/admin/usuarios"
-            ><i class="fas fa-users"></i> Admin- usuarios</a>
-        </li>
+        {% if ( role is not same as("REGISTRADO") ) %}
+            <li>
+                <a 
+                    href="/admin/comentarios"
+                ><i class="far fa-comments"></i> Admin- comentarios</a>
+            </li>
+        {% endif %}
+        {% if (role is same as ("SUPER") ) %}
+            <li>
+                <a 
+                    href="/admin/usuarios"
+                ><i class="fas fa-users"></i> Admin- usuarios</a>
+            </li>
+        {% endif %}
+        {% if (role is same as ("SUPER") or role is same as ("GESTOR") ) %}
+            <li>
+                <a 
+                    href="/admin/nuevo_evento"
+                ><i class="fa fa-plus" aria-hidden="true"></i> Admin- nuevo evento</a>
+            </li>
         {% endif %}
     </ul>
 </nav>

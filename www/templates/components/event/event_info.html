@@ -81,7 +81,7 @@
                                 </p>
                             {% endif %}
 
-                            {% if isAdmin %}
+                            {% if (role is not same as("REGISTRADO") ) %}
                                 <div class="comment-admin prr">
                                     <button
                                         class="btn m p btn-outlined-warning edit-button"
@@ -132,7 +132,11 @@
                                 <label for="name">Nombre:</label>
                             </div>
                             <div class="flex-75">
-                                <input type="text" id="name" name="name"><br>
+                                <input 
+                                    type="text" id="name" 
+                                    name="name" value="{{ user[1] }}"
+                                    readonly
+                                /><br>
                             </div>
                         </div>
 
@@ -141,7 +145,11 @@
                                 <label for="email">Email:</label>
                             </div>
                             <div class="flex-75">
-                                <input type="text" id="email" name="email"><br>
+                                <input 
+                                    type="text" id="email" 
+                                    name="email" value="{{ user[0] }}"
+                                    readonly
+                                /><br>
                             </div>
                         </div>
 

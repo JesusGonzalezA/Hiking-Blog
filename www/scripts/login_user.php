@@ -32,6 +32,6 @@
     if (isset($_COOKIE['error_login']))
         setcookie( 'error_login' ); 
 
-    $_SESSION["email"] = array($user['email'],$user['isAdmin']);
+    $_SESSION["email"] = array($user['email'],$user['role']);
     header('Location:/');
 ?>
