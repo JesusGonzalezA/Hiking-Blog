@@ -38,6 +38,7 @@
         <div class="text-center">
             <h1>Panel de administración - Gestión de usuarios</h1>
         </div>
+        
             <ul class="container ppp">
                 {% for user in users %}
                     <li class="shadow user mm">
@@ -46,23 +47,31 @@
                                 {{ attribute(user, 1) }}
                             </span>
                             - <br>  
-                            {{ attribute(user,2) }}
+                            <select name="rol" id="rol-select" disabled>
+                                {% for rol in roles %}
+                                    <option value="{{rol}}" {{ (rol == attribute(user,2) )? "selected"}}>{{rol}}</option>
+                                {% endfor %}
+                            </select>
                         </p>
                         <div class="comment-admin prr">
+                            
                             <button
                                 class="btn btn-rounded  m p btn-outlined-warning edit-button"
+                                id="edit-button"
                             >
                                 <i class="fas fa-edit"></i>
                             </button>
                         
                             <button 
                                 class="btn btn-rounded m p display-none btn-outlined-success save-button"
+                                id="save-button"
                             >
                                 <i class="fas fa-save"></i>
                             </button>
                     
                             <button
                                 class="btn  btn-rounded m p btn-outlined-danger delete-button"
+                                id="delete-button"
                             >
                                 <i class="fa fa-trash"></i>
                             </button>
@@ -81,4 +90,5 @@
     
     {% block scripts %}
     <script type="text/javascript" src="/js/admin/filter-users.js"></script>
+    <script type="text/javascript" src="/js/admin/edit-users.js"></script>
     {% endblock %}
