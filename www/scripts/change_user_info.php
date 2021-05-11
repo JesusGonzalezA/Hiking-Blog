@@ -51,5 +51,7 @@
             changeUser($user['idUser'], $name, $email);
         }
     }
+    unset($_SESSION['email']);
+    $_SESSION['email'] = array($email,$user['role']);
     header('Location:/perfil');
 ?>
