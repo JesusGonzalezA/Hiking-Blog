@@ -53,46 +53,58 @@
                                 {{ attribute(comentario, 0) }}
                             </span>
                         </div>
-                        <div class="comment-content">
-                            <p class="comment-date">
-                                {{ attribute(comentario, 1) }}
-                            </p>
-                            <p>
-                                {{ attribute(comentario, 2) }}
-                            </p>
-                        </div>
-                            
-                        {% if attribute(comentario, 4) == 1 %}
-                            <p class="comment-edited">
-                                Editado por el moderador
-                            </p>
-                        {% endif %}
-
-                        {% if isAdmin %}
-                            <div class="comment-admin prr">
-                                <button
-                                    class="btn m p btn-outlined-warning edit-button"
-                                    onclick="editComment('{{ loop.index }}')"
-                                >
-                                    Editar <i class="fas fa-edit"></i>
-                                </button>
-                                
-                                <button 
-                                    class="btn m p display-none btn-outlined-success save-button"
-                                    onclick="saveComment('{{ loop.index }}')"
-                                >
-                                    Save <i class="fas fa-save"></i>
-                                </button>
-
-                                <button
-                                    class="btn m p btn-outlined-danger delete-button"
-                                    onclick="deleteComment( '{{ attribute(comentario,3) }}' )"
-                                >
-                                    Eliminar <i class="fa fa-trash"></i>
-                                </button>
+                        
+                        <form action="/update_comment.php" method="POST">
+                            <div class="comment-content">
+                                <span class="comment-date">
+                                    {{ attribute(comentario, 1) }}
+                                </span>
+                                <input 
+                                    type="text" 
+                                    class="comment-content-info"
+                                    name="content"
+                                    placeholder="{{ attribute(comentario, 2) }}"
+                                    readonly
+                                />
+                                <input 
+                                    type="text" 
+                                    class="display-none"
+                                    name="index"
+                                    value= {{ attribute(comentario, 3) }}
+                                    readonly
+                                />
                             </div>
-                        {% endif %}
+                            
+                            {% if attribute(comentario, 4) == 1 %}
+                                <p class="comment-edited">
+                                    Editado por el moderador
+                                </p>
+                            {% endif %}
 
+                            {% if isAdmin %}
+                                <div class="comment-admin prr">
+                                    <button
+                                        class="btn m p btn-outlined-warning edit-button"
+                                        onclick="editComment(event, '{{ loop.index }}')"
+                                    >
+                                        Editar <i class="fas fa-edit"></i>
+                                    </button>
+                                
+                                    <button 
+                                        class="btn m p display-none btn-outlined-success save-button"
+                                    >
+                                        Save <i class="fas fa-save"></i>
+                                    </button>
+                            
+                                    <button
+                                        class="btn m p btn-outlined-danger delete-button"
+                                        onclick="deleteComment(event, '{{ attribute(comentario,3) }}' )"
+                                    >
+                                        Eliminar <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </form>
                     </div>
                 {% endfor %}
             </div>

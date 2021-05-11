@@ -2,13 +2,14 @@
     include("bd.php");
     session_start();
     $uri = $_SERVER['REQUEST_URI'];
+    $last_uri = $_SERVER['HTTP_REFERER'];
 
     // Check user permission
     // $email = $_SESSION["email"][0];
     // $user = getUser($email);
 
     if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
-        header('Location:/admin/comentarios');
+        header('Location:' . $last_uri);
         exit();
     }
 
@@ -18,5 +19,5 @@
     // Update comment
     updateComment($index, $content);
     
-    header('Location:/admin/comentarios');
+    header('Location:' . $last_uri);
 ?>
