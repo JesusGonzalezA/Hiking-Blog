@@ -11,7 +11,6 @@ const editComment = ( event, index ) => {
 
     // Set editable
     const content = commentsContentArr[index-1]
-    console.log(content.innerText);
     
     content.readOnly = false
     content.focus()
