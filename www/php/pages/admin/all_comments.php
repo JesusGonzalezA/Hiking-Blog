@@ -1,5 +1,5 @@
 <?php
-    include("bd.php");
+    include("php/model/bd.php");
     session_start();
 
     $eventsComments  = getAllComments();

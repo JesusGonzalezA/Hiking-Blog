@@ -46,7 +46,7 @@
                                 {{ attribute(user, 1) }}
                             </span>
                             - <br>  
-                            {{ attribute(user,2)? 'Administrador' : 'Registrado' }}
+                            {{ attribute(user,2) }}
                         </p>
                         <div class="comment-admin prr">
                             <button
@@ -80,5 +80,5 @@
     {% endblock %}
     
     {% block scripts %}
-    <script type="text/javascript" src="/src/admin/filter-users.js"></script>
+    <script type="text/javascript" src="/js/admin/filter-users.js"></script>
     {% endblock %}

@@ -1,5 +1,5 @@
 <?php
-    include("bd.php");
+    include("php/model/bd.php");
     session_start();
     $uri = $_SERVER['REQUEST_URI'];
     $last_uri = $_SERVER['HTTP_REFERER'];

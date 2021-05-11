@@ -37,51 +37,51 @@
 
   // Events
   if (startWith($uri, "/add_comment.php")){
-    include("scripts/add_comment.php");
+    include("php/scripts/add_comment.php");
   } else if (startWith($uri, "/evento/imprimir") ) {
-    include("scripts/evento_imprimir.php");
+    include("php/pages/evento_imprimir.php");
   } else if (startWith($uri, "/evento")){
-    include("scripts/evento.php");
+    include("php/pages/evento.php");
   } 
   // Admin
   else if (startWith($uri, "/admin/comentarios") ){
-    include("scripts/all_comments.php");
+    include("php/pages/admin/all_comments.php");
   } 
   else if (startWith($uri, "/admin/usuarios") ){
-    include("scripts/all_users.php");
+    include("php/pages/admin/all_users.php");
   }
   else if (startWith($uri, "/delete_comment.php") ){
-    include("scripts/delete_comment.php");
+    include("php/scripts/delete_comment.php");
   }
   else if (startWith($uri, "/update_comment.php") ){
-    include("scripts/update_comment.php");
+    include("php/scripts/update_comment.php");
   }
   else if (startWith($uri, "/admin/eventos") ){
-    include("scripts/new_event.php");
+    include("php/pages/admin/all_events.php");
   }
   // Profile
   else if (startWith($uri, "/perfil") ){
-    include("scripts/profile.php");
+    include("php/pages/profile.php");
   }
   else if (startWith($uri, "/change_user_info.php") ){
-    include("scripts/change_user_info.php");
+    include("php/scripts/change_user_info.php");
   }
   // Login - Register
   else if (startWith($uri, "/add_user.php")){
-    include("scripts/add_user.php");
+    include("php/scripts/add_user.php");
   } else if (startWith($uri, "/login_user.php")){
-    include("scripts/login_user.php");
+    include("php/scripts/login_user.php");
   }
   else if (startWith($uri, "/login") ){
-    include("scripts/login.php");
+    include("php/pages/login.php");
   } else if (startWith($uri, "/register")){
-    include("scripts/register.php");
+    include("php/pages/register.php");
   } else if (startWith($uri, "/logout.php") ){
-    include("scripts/logout.php");
+    include("php/scripts/logout.php");
   }
   // Default
   else {
-    include("scripts/bd.php");
+    include("php/model/bd.php");
     $events = getEvents();
     echo $twig->render('index.html', [
       'events'  => $events,

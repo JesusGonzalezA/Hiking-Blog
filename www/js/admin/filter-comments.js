@@ -15,8 +15,8 @@ const filter = ( ) => {
 
     // Filter by content
     const resultsContent = []
-    comments.content.forEach( ( content, index ) => {
-        if (content.value.toLowerCase().includes( value.toLowerCase() ))
+    comments.content.forEach( ( content, index ) => {        
+        if (content.getAttribute("placeholder").toLowerCase().includes( value.toLowerCase() ))
             resultsContent.push(index)
     })
 
@@ -42,9 +42,9 @@ const filter = ( ) => {
             child.style.display = display
         })
     })
-
+    
     // Show comments filtered by content
-    resultsContent.map( (index) => {
+    resultsContent.map( (index) => {        
         const comment     = comments.nodes[index]
         const detailsNode = comment.parentNode
 

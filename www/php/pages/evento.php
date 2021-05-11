@@ -1,5 +1,5 @@
 <?php
-  include("bd.php");
+    include("php/model/bd.php");
   session_start();
 
   $resto   = substr($uri, 8);

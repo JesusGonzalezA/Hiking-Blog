@@ -1,5 +1,5 @@
 <?php
-  include("bd.php");
+    include("php/model/bd.php");
 
   $resto = substr($uri, 17);
   $idEv = intval($resto); 
