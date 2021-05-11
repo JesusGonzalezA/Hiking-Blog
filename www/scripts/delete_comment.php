@@ -4,8 +4,11 @@
     $uri = $_SERVER['REQUEST_URI'];
 
     // Check user permission
-    // $email = $_SESSION["email"][0];
-    // $user = getUser($email);
+    if ( $_SESSION["email"][1] === "REGISTRADO" )
+    {
+        header("location:javascript://history.go(-1)");
+        return;
+    }
 
     // Get id
     if (isset($_GET['comment'])) {

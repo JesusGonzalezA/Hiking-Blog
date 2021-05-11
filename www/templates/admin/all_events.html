@@ -1,0 +1,108 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+
+    {% set body_class = 'grid-container' %}
+
+    {% block title %}
+        Mi perfil
+    {% endblock %}
+
+    {% block styles %}    
+        {{ parent() }}
+        <link rel="stylesheet" href="/styles/components/modal.css" />
+        <link rel="stylesheet" href="/styles/admin/admin.css" />
+        <link rel="stylesheet" href="/styles/admin/new_event.css" />
+    {% endblock %}
+
+    {% block header %}
+        {{ parent() }}
+         <!--Navigation-->
+         {% block navigation %}
+            {{ parent() }}
+         {% endblock %}
+    {% endblock %}
+
+    {% block aside_content%}
+        <form class="mttt form">
+            <div id="filter">
+                <i id="search-icon" class="fa fa-search" aria-hidden="true"></i>
+                <input 
+                    id="input_filter"
+                    placeholder="Filtre por texto" 
+                    type="text" 
+                />
+            </div>
+        </form>
+        <div class="mmm">        
+            <button
+                id="add_event"
+                class="btn btn-success"
+            ><i class="fa fa-plus" aria-hidden="true"></i> Añadir evento</button>
+
+            <div id="modal-form-comment" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>
+                            <i class="fas fa-pencil-alt"></i>
+                            Añadir evento
+                        </h2>
+                        <button id="close-modal" class="btn btn-p0 btn-transparent">
+                            <i class="far fa-times-circle" ></i> Cerrar
+                        </button>
+                    </div>
+
+                    <form class="modal-body form-new-event ppp ml-10">
+
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Título: </label>
+                            
+                            <input
+                                class="flex-75"
+                                type="text"
+                                name="title"
+                            />
+                        </div>
+                        
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Descripción: </label>
+
+                            <textarea
+                                class="flex-75"
+                                name="description"
+                            ></textarea>
+                        </div>
+                        
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Fecha: </label>
+
+                            <input 
+                                class="flex-75"
+                                type="date"
+                                name="date"
+                            />
+                        </div>
+
+                        <input
+                            type="submit"
+                            class="mtt align-right btn btn-outlined-success"
+                        >
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block main %}
+    <div class="mmm">
+        <div class="text-center">
+            <h1>Panel de administración - Gestión de eventos</h1>
+            <hr class="hr-80" />
+        </div>
+    </div>
+    {% endblock %}
+
+    
+    {% block scripts %}
+    <script type="module" src="/src/components/modals/addEvent.js"></script>
+    {% endblock %}

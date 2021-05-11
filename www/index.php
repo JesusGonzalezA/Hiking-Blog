@@ -25,7 +25,7 @@
 
     if ( 
          ( $role !== "SUPER" ) && ($uri === "/admin/usuarios" ) 
-      || ( $role !== "SUPER" && $role !== "GESTOR" ) && ($uri === "/admin/nuevo_evento" )
+      || ( $role !== "SUPER" && $role !== "GESTOR" ) && ($uri === "/admin/eventos" )
       || ( $role !== "SUPER" && $role !== "GESTOR" && $role !== "MODERADOR") && ($uri === "/admin/comentarios" )
     ) {
       header('Location:/');
@@ -56,7 +56,7 @@
   else if (startWith($uri, "/update_comment.php") ){
     include("scripts/update_comment.php");
   }
-  else if (startWith($uri, "/admin/nuevo_evento") ){
+  else if (startWith($uri, "/admin/eventos") ){
     include("scripts/new_event.php");
   }
   // Profile

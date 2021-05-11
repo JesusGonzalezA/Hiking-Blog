@@ -5,8 +5,11 @@
     $last_uri = $_SERVER['HTTP_REFERER'];
 
     // Check user permission
-    // $email = $_SESSION["email"][0];
-    // $user = getUser($email);
+    if ( $_SESSION["email"][1] === "REGISTRADO" )
+    {
+        header('Location:' . $last_uri);
+        return;
+    }
 
     if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
         header('Location:' . $last_uri);

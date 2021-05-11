@@ -1,0 +1,25 @@
+.form-new-event {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.flex-container {
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center ;
+}
+
+.flex-25 {
+    justify-self: flex-start;
+}
+
+.flex-75.input, textarea {
+    padding: 10px;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.align-right {
+    align-self: flex-end;
+}
