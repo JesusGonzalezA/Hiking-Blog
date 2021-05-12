@@ -17,7 +17,7 @@ CREATE TABLE comments
     idEvent INT NOT NULL,
     comment VARCHAR(300) NOT NULL,
     date DATE NOT NULL, 
-    author VARCHAR(100) NOT NULL REFERENCES users(email) ON DELETE CASCADE,
+    author VARCHAR(100) NOT NULL REFERENCES users(email),
     isEdited BOOLEAN DEFAULT(FALSE) NOT NULL,
     FOREIGN KEY(idEvent) REFERENCES events(id) ON DELETE CASCADE
 );
