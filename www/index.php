@@ -25,7 +25,7 @@
 
     if ( 
          ( $role !== "SUPER" ) && ($uri === "/admin/usuarios" ) 
-      || ( $role !== "SUPER" && $role !== "GESTOR" ) && ($uri === "/admin/eventos" )
+      || ( $role !== "SUPER" && $role !== "GESTOR" ) && ($uri === "/admin/eventos")
       || ( $role !== "SUPER" && $role !== "GESTOR" && $role !== "MODERADOR") && ($uri === "/admin/comentarios" )
     ) {
       header('Location:/');
@@ -53,6 +53,10 @@
   else if (startWith($uri, "/admin/eventos") ){
     include("php/pages/admin/all_events.php");
   }
+  else if (startWith($uri, "/admin/evento") ){
+    include("php/pages/admin/edit_event.php");
+  }
+    // Scripts
   else if (startWith($uri, "/delete_comment.php") ){
     include("php/scripts/delete_comment.php");
   }

@@ -9,7 +9,7 @@
         $idEvent = -1;
     }
     // Check user permission
-    if ( $_SESSION["email"][1] !== "SUPER" )
+    if ( $_SESSION["email"][1] !== "SUPER" && $_SESSION["email"][1] !== "GESTOR" )
     {
         header("Location:/admin/eventos");
         return;

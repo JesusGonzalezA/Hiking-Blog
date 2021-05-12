@@ -1,0 +1,40 @@
+{% block event %}
+    <div class="mmm  ppppp">
+         <!--Title-->
+        <h2>{{ evento['title'] }}</h2>
+
+        <!--Event-->
+        <div class="mmm">
+            <p>
+                <b>Organizador:</b> {{ evento['author'] }}</h3>
+            </p>
+            <p>
+                <b>Fecha:</b> {{ evento['date'] }}
+            </p>
+
+            <p>
+                {{ evento['description'] }}
+            </p>
+
+            <div class="images-container">
+                {% if evento['photo'] %}
+                    <img
+                        class="shadow"
+                        loading="lazy"
+                        src={{ evento['photo'] }}
+                        alt={{ evento['title'] }}
+                    />
+                {% endif %}
+
+                {% for image in gallery %}
+                    <img
+                        class="shadow"
+                        loading="lazy"
+                        src={{ image }}
+                        alt={{ evento['title'] }}
+                    />
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
