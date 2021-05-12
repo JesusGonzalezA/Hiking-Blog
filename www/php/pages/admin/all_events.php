@@ -11,7 +11,9 @@
     }
 
     echo $twig->render('admin/all_events.html',[
+        'email'   => $_SESSION["email"][0],
         'role'    => $_SESSION["email"][1],
-        'events'  => getEventsBasicInfo()
+        'events'  => getEventsBasicInfo(),
+        'tags'    => getAllTags()
     ] );
 ?>

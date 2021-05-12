@@ -16,6 +16,7 @@
       return $mysqli;
     }
 
+    // Event
     function getEvent($idEv) {
       
       if (!$mysqli){
@@ -68,6 +69,64 @@
       $stmt->close();
     }
 
+    function getGallery ($idEvent) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
+      
+      $stmt = $mysqli->prepare("SELECT photo FROM gallery WHERE idEvent=?");
+      $stmt->bind_param("i", $idEvent);
+      $stmt->execute();
+      $gallery = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
+      $gallery = array_map(function($image) {return $image[0];}, $gallery);
+      return $gallery;
+    }
+
+    function getTags ($idEvent) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
+      
+      $stmt = $mysqli->prepare("SELECT description from TAGS, TAGS_EVENTS where TAGS.id=TAGS_EVENTS.idTag AND TAGS_EVENTS.idEvent=?");
+      $stmt->bind_param("i", $idEvent);
+      $stmt->execute();
+      $tags = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
+      $tags = array_map(function($tag) {return $tag[0];}, $tags);
+      return $tags;
+    }
+
+    function addEvent( $photo, $title, $place, $date, $author, $description ){
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+      $stmt = $mysqli->prepare("INSERT INTO events 
+                                (photo, title, place, date, author, description) 
+                                VALUES (?, ?, ?, ?, ?, ?)"
+      );
+      $stmt->bind_param("ssssss", $photo, $title, $place, $date, $author, $description);
+      $stmt->execute();
+      $stmt->close();
+    }
+
+    // Tags
+    function getAllTags () {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
+      
+      $stmt = $mysqli->prepare("SELECT id, description from TAGS");
+      $stmt->execute();
+      $tags = $stmt->get_result()->fetch_all();
+      $stmt->close();
+      
+      return $tags;
+    }
+
+    // Comments
     function getComments($idEv) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
@@ -134,6 +193,7 @@
       $stmt->close();
     }
 
+    // Banned words
     function getBannedWords() {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
@@ -148,36 +208,7 @@
       return $banned;
     }
 
-    function getGallery ($idEvent) {
-      if (!$mysqli){
-        if ( !($mysqli = startMySqli() )) return;
-      }   
-      
-      $stmt = $mysqli->prepare("SELECT photo FROM gallery WHERE idEvent=?");
-      $stmt->bind_param("i", $idEvent);
-      $stmt->execute();
-      $gallery = $stmt->get_result()->fetch_all();
-      $stmt->close();
-
-      $gallery = array_map(function($image) {return $image[0];}, $gallery);
-      return $gallery;
-    }
-
-    function getTags ($idEvent) {
-      if (!$mysqli){
-        if ( !($mysqli = startMySqli() )) return;
-      }   
-      
-      $stmt = $mysqli->prepare("SELECT description from TAGS, TAGS_EVENTS where TAGS.id=TAGS_EVENTS.idTag AND TAGS_EVENTS.idEvent=?");
-      $stmt->bind_param("i", $idEvent);
-      $stmt->execute();
-      $tags = $stmt->get_result()->fetch_all();
-      $stmt->close();
-
-      $tags = array_map(function($tag) {return $tag[0];}, $tags);
-      return $tags;
-    }
-
+    // Users
     function getUsers() {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;

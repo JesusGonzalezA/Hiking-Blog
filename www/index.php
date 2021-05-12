@@ -71,6 +71,10 @@
   }
   else if (startWith($uri, "/delete_event.php")){
     include("php/scripts/delete_event.php");
+  } else if (startWith($uri, "/add_event.php")){
+    include("php/scripts/add_event.php");
+  } else if (startWith($uri, "/update_event.php")){
+    include("php/scripts/update_event.php");
   }
   // Profile
   else if (startWith($uri, "/perfil") ){

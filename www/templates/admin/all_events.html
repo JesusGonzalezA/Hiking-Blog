@@ -51,7 +51,11 @@
                         </button>
                     </div>
 
-                    <form class="modal-body form-new-event ppp ml-10">
+                    <form 
+                        class="modal-body form-new-event ppp ml-10"
+                        action="/add_event.php" 
+                        method="POST"
+                    >
 
                         <div class="flex-container mbb">
                             <label class="flex-25 bold mr">Título: </label>
@@ -60,6 +64,18 @@
                                 class="flex-75"
                                 type="text"
                                 name="title"
+                            />
+                        </div>
+
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Email: </label>
+                            
+                            <input
+                                class="flex-75"
+                                type="text"
+                                value="{{ email }}"
+                                name="author"
+                                disabled
                             />
                         </div>
                         
@@ -82,8 +98,39 @@
                             />
                         </div>
 
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Lugar: </label>
+
+                            <input 
+                                class="flex-75"
+                                type="text"
+                                name="place"
+                            />
+                        </div>
+
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Foto: </label>
+
+                            <input 
+                                class="flex-75"
+                                type="text"
+                                name="photo"
+                            />
+                        </div>
+
+                        <div class="flex-container mbb">
+                            <label class="flex-25 bold mr">Tags: </label>
+
+                            <select class="flex-75" name="tag[]" multiple>
+                                {% for tag in tags %}
+                                    <option value="{{ attribute(tag,0) }}">{{ attribute(tag,1) }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
                         <input
                             type="submit"
+                            id="submit-button"
                             class="mtt align-right btn btn-outlined-success"
                         >
                         
@@ -110,7 +157,7 @@
                         <button
                             class="btn btn-rounded  m p btn-outlined-warning edit-button"
                             class="edit-button"
-                            onclick="editEvent('{{loop.index}}')"
+                            onclick="editEvent('{{ attribute(event, 0) }}')"
                         >
                             <i class="fas fa-edit"></i>
                         </button>
@@ -130,6 +177,7 @@
 
     
     {% block scripts %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script type="module" src="/js/components/modals/addEvent.js"></script>
     <script type="text/javascript" src="/js/admin/filter-events.js"></script>
     <script type="text/javascript" src="/js/admin/edit-events.js"></script>
