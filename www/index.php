@@ -65,6 +65,9 @@
   else if (startWith($uri, "/change_user_role.php")){
     include("php/scripts/change_user_role.php");
   }
+  else if (startWith($uri, "/delete_event.php")){
+    include("php/scripts/delete_event.php");
+  }
   // Profile
   else if (startWith($uri, "/perfil") ){
     include("php/pages/profile.php");

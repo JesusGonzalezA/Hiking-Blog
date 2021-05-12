@@ -7,7 +7,7 @@ CREATE TABLE events
     title VARCHAR(100) NOT NULL, 
     place VARCHAR(100) NOT NULL, 
     date DATE NOT NULL, 
-    author VARCHAR(100) NOT NULL REFERENCES users(email),
+    author VARCHAR(100) REFERENCES users(email),
     description VARCHAR(3000)
 );
 
@@ -17,9 +17,9 @@ CREATE TABLE comments
     idEvent INT NOT NULL,
     comment VARCHAR(300) NOT NULL,
     date DATE NOT NULL, 
-    author VARCHAR(100) NOT NULL REFERENCES users(email),
+    author VARCHAR(100) NOT NULL REFERENCES users(email) ON DELETE CASCADE,
     isEdited BOOLEAN DEFAULT(FALSE) NOT NULL,
-    FOREIGN KEY(idEvent) REFERENCES events(id)
+    FOREIGN KEY(idEvent) REFERENCES events(id) ON DELETE CASCADE
 );
 
 CREATE TABLE banned_words
@@ -33,7 +33,7 @@ CREATE TABLE gallery
     id INT AUTO_INCREMENT PRIMARY KEY,
     idEvent INT NOT NULL,
     photo VARCHAR(50) NOT NULL,
-    FOREIGN KEY(idEvent) REFERENCES events(id)
+    FOREIGN KEY(idEvent) REFERENCES events(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tags
@@ -44,8 +44,8 @@ CREATE TABLE tags
 
 CREATE TABLE tags_events
 (
-    idTag INT NOT NULL REFERENCES tags(id),
-    idEvent INT NOT NULL REFERENCES events(id),
+    idTag INT NOT NULL REFERENCES tags(id) ON DELETE CASCADE,
+    idEvent INT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
     PRIMARY KEY(idTag, idEvent)
 );
 

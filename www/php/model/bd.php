@@ -57,6 +57,17 @@
       return $events;
     }
 
+    function deleteEvent($idEvent) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }      
+      
+      $stmt = $mysqli->prepare("DELETE FROM events WHERE id=?");
+      $stmt->bind_param("i", $idEvent);
+      $stmt->execute();
+      $stmt->close();
+    }
+
     function getComments($idEv) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
