@@ -19,6 +19,14 @@
     $description = $_POST['description'];
     $tags        = $_POST['tag'];
 
+    if( empty($title)
+        || empty($place)
+        || empty($date)
+    ){
+        header("Location:/admin/eventos");
+        return;
+    }
+
     // Add event
     $idEvent = addEvent( $photo, $title, $place, $date, $author, $description );
 
