@@ -129,6 +129,21 @@
       return $lastId;
     }
 
+    function updateEvent ( $idEv, $photo, $title, $place, $date, $description ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+      $stmt = $mysqli->prepare("UPDATE events SET 
+                              photo=?, title=?, place=?, 
+                              date=?, description=? 
+                              WHERE id=?"
+      );
+      
+      $stmt->bind_param("sssssi", $photo, $title, $place, $date, $description, $idEv);
+      $stmt->execute();
+      $stmt->close();
+    }
+
     // Tags
     function getAllTags () {
       if (!$mysqli){

@@ -6,7 +6,8 @@
         </div>
 
         <!--Event-->
-        <form class="mmm">
+        <form class="mmm" action="/update_event.php" method="POST">
+            <input value="{{ evento['id']}}" name="id" type="hidden" />
             <div class="flex-container mbb">
                 <label class="flex-25 bold mr">Título: </label>
                 

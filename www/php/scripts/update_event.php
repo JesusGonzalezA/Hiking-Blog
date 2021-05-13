@@ -11,6 +11,7 @@
     }
 
     // Get info from form
+    $idEv        = $_POST['id'];
     $photo       = $_POST['photo'];
     $title       = $_POST['title'];
     $place       = $_POST['place'];
@@ -20,13 +21,7 @@
     $tags        = $_POST['tag'];
 
     // Edit event
-    $idEvent = addEvent( $photo, $title, $place, $date, $author, $description );
+    updateEvent ( $idEv, $photo, $title, $place, $date, $description );
 
-    if ( !empty($tags) ) {
-        foreach ( $tags as $tag ) {
-            addTag( $tag, $idEvent );
-        }
-    }
-
-    header("Location:/admin/eventos");
+    header("Location:/admin/evento/" . $idEv);
 ?>
