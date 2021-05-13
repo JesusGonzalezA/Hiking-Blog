@@ -1,54 +1,107 @@
 {% block event %}
     <div class="mmm  ppppp">
          <!--Title-->
-         <div id="title-block" class="flex-container">
-            <div class="flex-25 mr-60">
-                <h2>{{ evento['title'] }}</h2>
-            </div>
-
-            <div class="flex-75 tag-container">
-                    {% for tag in tags %}
-                    <div class="tag shadow">
-                        {{ tag }}
-                        <div class="triangle-right"></div>
-                    </div>
-                    {% endfor %}
-            </div>
+         <div id="title-block" >
+            <h2>{{ evento['title'] }}</h2>
         </div>
-        
 
         <!--Event-->
-        <div class="mmm">
-            <p>
-                <b>Organizador:</b> {{ evento['author'] }}</h3>
-            </p>
-            <p>
-                <b>Fecha:</b> {{ evento['date'] }}
-            </p>
-
-            <p>
-                <b>Descripción:</b> {{ evento['description'] }}
-            </p>
-
-            <div class="images-container">
-                {% if evento['photo'] %}
-                    <img
-                        class="shadow"
-                        loading="lazy"
-                        src={{ evento['photo'] }}
-                        alt={{ evento['title'] }}
-                    />
-                {% endif %}
-
-                {% for image in gallery %}
-                    <img
-                        class="shadow"
-                        loading="lazy"
-                        src={{ image }}
-                        alt={{ evento['title'] }}
-                    />
-                {% endfor %}
+        <form class="mmm">
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Título: </label>
+                
+                <input
+                    class="flex-75"
+                    type="text"
+                    name="title"
+                    value="{{ evento['title'] }}"
+                />
             </div>
-        </div>
+
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Email: </label>
+                
+                <input
+                    class="flex-75"
+                    type="text"
+                    value="{{ evento['author'] }}"
+                    name="author"
+                    disabled
+                />
+            </div>
+            
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Descripción: </label>
+
+                <textarea
+                    class="flex-75"
+                    name="description"
+                >{{ evento['description'] }}</textarea>
+            </div>
+            
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Fecha: </label>
+
+                <input 
+                    class="flex-75"
+                    type="date"
+                    name="date"
+                    value="{{ evento['date'] }}"
+                />
+            </div>
+
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Lugar: </label>
+
+                <input 
+                    class="flex-75"
+                    type="text"
+                    name="place"
+                    value="{{ evento['place'] }}"
+                />
+            </div>
+
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Foto: </label>
+
+                <input 
+                    class="flex-75"
+                    type="text"
+                    name="photo"
+                    value="{{ evento['photo'] }}"
+                />
+            </div>
+
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Tags: </label>
+
+                <select class="flex-75" name="tag[]" multiple>
+                    {% for tagn in allTags %}
+                        <option value="{{ attribute(tagn,0) }}" {% if attribute(tagn,1) in tags %} selected {% endif %}>{{ attribute(tagn,1) }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Galería: </label>
+
+                <div class="flex-75">
+                    {% for image in gallery %}
+                    <input 
+                        type="text"
+                        name="photo"
+                        value="{{ image }}"
+                    />
+                    {% endfor %}
+                </div>
+            </div>
+                
+            <div class="flex-end mrrr">
+                <input 
+                    type="submit"
+                    class="btn btn-success"
+                />
+            </div>
+        </form>
     </div>
 {% endblock %}

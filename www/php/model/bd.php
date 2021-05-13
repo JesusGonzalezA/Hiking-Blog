@@ -23,7 +23,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }      
       
-      $stmt = $mysqli->prepare("SELECT id, title, date, author, description, photo FROM events WHERE id=?");
+      $stmt = $mysqli->prepare("SELECT id, title, place, date, author, description, photo FROM events WHERE id=?");
       $stmt->bind_param("i", $idEv);
       $stmt->execute();
       $event = $stmt->get_result()->fetch_assoc();
@@ -96,6 +96,20 @@
       $stmt->close();
 
       $tags = array_map(function($tag) {return $tag[0];}, $tags);
+      return $tags;
+    }
+
+    function getTagsComplete ($idEvent) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
+      
+      $stmt = $mysqli->prepare("SELECT description, idTag from TAGS, TAGS_EVENTS where TAGS.id=TAGS_EVENTS.idTag AND TAGS_EVENTS.idEvent=?");
+      $stmt->bind_param("i", $idEvent);
+      $stmt->execute();
+      $tags = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
       return $tags;
     }
 

@@ -1,0 +1,17 @@
+input, textarea, select {
+    font-size: inherit;
+    font-family: inherit;
+    padding: 5px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+textarea {
+    height: 150px;
+}
+
+.flex-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

@@ -13,6 +13,7 @@
     $idEv    = intval($resto); 
     $event   = getEvent($idEv);
     $gallery = getGallery($idEv);
+    $allTags = getAllTags();
     $tags    = getTags($idEv); 
 
 
@@ -22,6 +23,7 @@
             'gallery'     => $gallery,
             'tags'        => $tags,
             'role'        => $role,
+            'allTags'     => $allTags
         ]);
     }
     else {
