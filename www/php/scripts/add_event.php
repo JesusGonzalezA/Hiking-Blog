@@ -20,6 +20,13 @@
     $tags        = $_POST['tag'];
 
     // Add event
-    addEvent( $photo, $title, $place, $date, $author, $description );
+    $idEvent = addEvent( $photo, $title, $place, $date, $author, $description );
+
+    if ( !empty($tags) ) {
+        foreach ( $tags as $tag ) {
+            addTag( $tag, $idEvent );
+        }
+    }
+
     header("Location:/admin/eventos");
 ?>

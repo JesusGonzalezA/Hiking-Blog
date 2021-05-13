@@ -109,7 +109,10 @@
       );
       $stmt->bind_param("ssssss", $photo, $title, $place, $date, $author, $description);
       $stmt->execute();
+      $lastId = $mysqli->insert_id;
       $stmt->close();
+
+      return $lastId;
     }
 
     // Tags
@@ -124,6 +127,19 @@
       $stmt->close();
       
       return $tags;
+    }
+
+    function addTag ( $idTag, $idEvent ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+      $stmt = $mysqli->prepare("INSERT INTO tags_events
+                                (idTag, idEvent) 
+                                VALUES (?, ?)"
+      );
+      $stmt->bind_param("ii", $idTag, $idEvent);
+      $stmt->execute();
+      $stmt->close();
     }
 
     // Comments
