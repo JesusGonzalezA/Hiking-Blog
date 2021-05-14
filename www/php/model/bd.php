@@ -144,6 +144,30 @@
       $stmt->close();
     }
 
+    function updateTags ( $idEv, $tags ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+
+      // Delete all tags
+      $stmt = $mysqli->prepare("DELETE FROM tags_events WHERE idEvent=?");
+      $stmt->bind_param("i", $idEv );
+      $stmt->execute();
+
+      if ( !empty($tags) ) {
+        foreach ( $tags as $idTag ) {
+          $stmt = $mysqli->prepare("INSERT INTO tags_events
+                                    (idTag, idEvent) 
+                                    VALUES (?, ?)"
+          );
+          $stmt->bind_param("ii", $idTag, $idEv);
+          $stmt->execute();
+        }
+      }
+
+      $stmt->close();
+    }
+
     // Tags
     function getAllTags () {
       if (!$mysqli){

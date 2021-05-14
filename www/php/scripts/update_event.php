@@ -22,6 +22,7 @@
 
     // Edit event
     updateEvent ( $idEv, $photo, $title, $place, $date, $description );
+    updateTags ( $idEv, $tags );
 
     header("Location:/admin/evento/" . $idEv);
 ?>
