@@ -12,7 +12,7 @@
     $resto   = substr($uri, 14);
     $idEv    = intval($resto); 
     $event   = getEvent($idEv);
-    $gallery = getGallery($idEv);
+    $gallery = getGalleryComplete($idEv);
     $allTags = getAllTags();
     $tags    = getTags($idEv); 
 

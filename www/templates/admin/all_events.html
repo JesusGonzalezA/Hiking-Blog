@@ -54,6 +54,7 @@
                     <form 
                         class="modal-body form-new-event ppp ml-10"
                         action="/add_event.php" 
+                        enctype="multipart/form-data"
                         method="POST"
                     >
 
@@ -113,8 +114,9 @@
 
                             <input 
                                 class="flex-75"
-                                type="text"
+                                type="file"
                                 name="photo"
+                                accept=".jpg,.jpeg,.png"
                             />
                         </div>
 

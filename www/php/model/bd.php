@@ -84,6 +84,50 @@
       return $gallery;
     }
 
+    function getGalleryComplete ($idEvent) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }   
+      
+      $stmt = $mysqli->prepare("SELECT photo, id FROM gallery WHERE idEvent=?");
+      $stmt->bind_param("i", $idEvent);
+      $stmt->execute();
+      $gallery = $stmt->get_result()->fetch_all();
+      $stmt->close();
+
+      return $gallery;
+    }
+
+    function addToGallery( $idEv, $photo ){
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+      $stmt = $mysqli->prepare("INSERT INTO gallery 
+                                (idEvent, photo) 
+                                VALUES (?, ?)"
+      );
+      $stmt->bind_param("is", $idEv, $photo);
+      $stmt->execute();
+      $stmt->close();
+    }
+
+    function deleteFromGallery ( $delete_gallery ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+
+      // Delete all tags
+      if ( !empty($delete_gallery) ) {
+        foreach ( $delete_gallery as $idGallery ) {
+          $stmt = $mysqli->prepare("DELETE FROM gallery WHERE id=?");
+          $stmt->bind_param("i", $idGallery);
+          $stmt->execute();
+          $stmt->close();
+        }
+      }
+
+    }
+
     function getTags ($idEvent) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
@@ -129,17 +173,27 @@
       return $lastId;
     }
 
-    function updateEvent ( $idEv, $photo, $title, $place, $date, $description ) {
+    function updateEvent ( $idEv, $title, $place, $date, $description ) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
       }  
       $stmt = $mysqli->prepare("UPDATE events SET 
-                              photo=?, title=?, place=?, 
+                              title=?, place=?, 
                               date=?, description=? 
                               WHERE id=?"
       );
       
-      $stmt->bind_param("sssssi", $photo, $title, $place, $date, $description, $idEv);
+      $stmt->bind_param("ssssi", $title, $place, $date, $description, $idEv);
+      $stmt->execute();
+      $stmt->close();
+    }
+
+    function updatePhoto ( $idEv, $photo ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }  
+      $stmt = $mysqli->prepare("UPDATE events SET photo=? WHERE id=?");
+      $stmt->bind_param("si", $photo, $idEv);
       $stmt->execute();
       $stmt->close();
     }

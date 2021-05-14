@@ -6,7 +6,12 @@
         </div>
 
         <!--Event-->
-        <form class="mmm" action="/update_event.php" method="POST">
+        <form 
+            class="mmm" 
+            action="/update_event.php" 
+            method="POST"
+            enctype="multipart/form-data"
+        >
             <input value="{{ evento['id']}}" name="id" type="hidden" />
             <div class="flex-container mbb">
                 <label class="flex-25 bold mr">Título: </label>
@@ -63,13 +68,13 @@
             </div>
 
             <div class="flex-container mbb">
-                <label class="flex-25 bold mr">Foto: </label>
+                <label class="flex-25 bold mr">Renovar foto: </label>
 
                 <input 
                     class="flex-75"
-                    type="text"
+                    type="file"
                     name="photo"
-                    value="{{ evento['photo'] }}"
+                    accept=".jpg,.jpeg,.png"
                 />
             </div>
 
@@ -84,17 +89,27 @@
             </div>
             
             <div class="flex-container mbb">
-                <label class="flex-25 bold mr">Galería: </label>
+                <label class="flex-25 bold mr"> Añadir a galería: </label>
 
                 <div class="flex-75">
-                    {% for image in gallery %}
                     <input 
-                        type="text"
-                        name="photo"
-                        value="{{ image }}"
+                        class="flex-75"
+                        type="file"
+                        name="new_gallery[]"
+                        accept=".jpg,.jpeg,.png"
+                        multiple
                     />
-                    {% endfor %}
                 </div>
+            </div>
+
+            <div class="flex-container mbb">
+                <label class="flex-25 bold mr"> Quitar de la galería: </label>
+
+                <select class="flex-75" name="delete_gallery[]" multiple>
+                    {% for image in gallery %}
+                        <option value="{{ attribute(image,1) }}">{{ attribute(image,0) }}</option>
+                    {% endfor %}
+                </select>
             </div>
                 
             <div class="flex-end mrrr">
