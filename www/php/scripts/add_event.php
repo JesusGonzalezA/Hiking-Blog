@@ -21,34 +21,39 @@
     if( empty($title)
         || empty($place)
         || empty($date)
-        || !isset( $_FILES['photo'] )
     ){
         header("Location:/admin/eventos");
         return;
     }
 
-    // Upload file 
+    // Upload file
     $errors= array();
-    $file_name = $_FILES['photo']['name'];
-    $file_size = $_FILES['photo']['size'];
-    $file_tmp  = $_FILES['photo']['tmp_name'];
-    $file_type = $_FILES['photo']['type'];
-    $file_ext = strtolower(end(explode('.',$_FILES['photo']['name'])));
-    $extensions= array("jpeg","jpg","png");
-    
-    if ( !in_array( $file_ext, $extensions) ){
-        $errors[] = "Extension no permitida, elige una imagen JPEG o PNG.";
+
+    if ( isset( $_FILES['photo'] ) && ($_FILES['photo']['size'] !== 0) ) { 
+        $file_name = $_FILES['photo']['name'];
+        $file_size = $_FILES['photo']['size'];
+        $file_tmp  = $_FILES['photo']['tmp_name'];
+        $file_type = $_FILES['photo']['type'];
+        $file_ext = strtolower(end(explode('.',$_FILES['photo']['name'])));
+        $extensions= array("jpeg","jpg","png");
+        
+        if ( !in_array( $file_ext, $extensions) ){
+            $errors[] = "Extension no permitida elige una imagen JPG, JPEG o PNG.";
+        }
+        
+        if ( $file_size > 2097152 ){
+            $errors[] = 'Tamano del fichero demasiado grande';
+        }
     }
-    
-    if ( $file_size > 2097152 ){
-        $errors[] = 'Tamano del fichero demasiado grande';
-    }
-    
     // Add event
     if ( empty($errors) ) {
-        move_uploaded_file($file_tmp, "assets/places/" . $file_name);
-        $photo = "/assets/places/" . $file_name;
-        $idEvent = addEvent( $photo, $title, $place, $date, $author, $description );
+        $idEvent = addEvent( $title, $place, $date, $author, $description );
+
+        if (($_FILES['photo']['size'] !== 0)){
+            move_uploaded_file($file_tmp, "assets/places/" . $file_name);
+            $photo = "/assets/places/" . $file_name;
+            updatePhoto( $idEvent, $photo );
+        }
 
         if ( !empty($tags) ) {
             foreach ( $tags as $tag ) {

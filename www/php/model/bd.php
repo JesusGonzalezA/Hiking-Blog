@@ -157,15 +157,15 @@
       return $tags;
     }
 
-    function addEvent( $photo, $title, $place, $date, $author, $description ){
+    function addEvent( $title, $place, $date, $author, $description ){
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
       }  
       $stmt = $mysqli->prepare("INSERT INTO events 
-                                (photo, title, place, date, author, description) 
-                                VALUES (?, ?, ?, ?, ?, ?)"
+                                ( title, place, date, author, description) 
+                                VALUES ( ?, ?, ?, ?, ?)"
       );
-      $stmt->bind_param("ssssss", $photo, $title, $place, $date, $author, $description);
+      $stmt->bind_param("sssss", $title, $place, $date, $author, $description);
       $stmt->execute();
       $lastId = $mysqli->insert_id;
       $stmt->close();
