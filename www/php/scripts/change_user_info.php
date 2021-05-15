@@ -49,9 +49,9 @@
         if ( $error ) setcookie('error_update', "El email no esta disponible" );
         else {
             changeUser($user['idUser'], $name, $email);
+            unset($_SESSION['email']);
+            $_SESSION['email'] = array($email,$user['role']);
         }
     }
-    unset($_SESSION['email']);
-    $_SESSION['email'] = array($email,$user['role']);
     header('Location:/perfil');
 ?>
