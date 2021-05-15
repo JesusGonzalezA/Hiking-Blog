@@ -42,6 +42,6 @@ Visite la página localhost:<HOST_MACHINE_UNSECURE_HOST_PORT> en su navegador.
 ![Demo admin](demo/Admin.gif)
 
 ### Usuario registrado - Móvil
-![Demo móvil](demo/Movil.gif)
+![Demo móvil](demo/movil.gif)
 
 
