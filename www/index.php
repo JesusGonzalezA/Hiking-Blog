@@ -95,6 +95,8 @@
     include("php/pages/register.php");
   } else if (startWith($uri, "/logout.php") ){
     include("php/scripts/logout.php");
+  } else if (startWith($uri, "/buscar") ){
+    include("php/pages/search.php");
   }
   // Default
   else {

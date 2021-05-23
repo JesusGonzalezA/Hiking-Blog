@@ -1,0 +1,41 @@
+{% extends "components/base.html" %}
+{% use "components/nav.html" %}
+
+{% block title %}
+    Buscar
+{% endblock %}
+
+{% block styles %}    
+    {{ parent() }}
+    <link rel="stylesheet" href="/styles/search.css" />
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+        <!--Navigation-->
+        {% block navigation %}
+        {{ parent() }}
+        {% endblock %}
+{% endblock %}
+
+{% block main %}
+    <div class="mmm text-center">
+        <h1>Buscar un evento</h1>
+        <hr class="hr-80" />
+        
+        <div class="search">
+            <input 
+                type="text" 
+                id="search-bar" 
+                placeholder="Buscar un evento por nombre o descripción" 
+            />
+            <i id="search-icon" class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        <ul class="mttt pp mrr text-left" id="result">
+        </ul>
+
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}
