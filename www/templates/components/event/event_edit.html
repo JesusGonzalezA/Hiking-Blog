@@ -25,6 +25,16 @@
             </div>
 
             <div class="flex-container mbb">
+                <label class="flex-25 bold mr">Publicado: </label>
+                <input
+                    class="flex-75"
+                    type="checkbox"
+                    {{ (evento['isPublished'] is same as 1 ) ? "checked" : "" }}
+                    name="published"
+                />
+            </div>
+
+            <div class="flex-container mbb">
                 <label class="flex-25 bold mr">Email: </label>
                 
                 <input

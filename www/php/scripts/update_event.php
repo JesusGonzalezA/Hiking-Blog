@@ -77,15 +77,16 @@
         $description    = $_POST['description'];
         $tags           = $_POST['tag'];
         $delete_gallery = $_POST['delete_gallery'];
+        $published      = $_POST['published'] === 'on';
 
         // Edit event
-        updateEvent ( $idEv, $title, $place, $date, $description );
+        updateEvent ( $idEv, $title, $place, $date, $description, $published );
         deleteFromGallery ( $delete_gallery );
         updateTags ( $idEv, $tags );
     }
     else {
         setcookie( 'error_update_event', implode('|', $errors) ); 
     }
-
+    
     header("Location:/admin/evento/" . $idEv);
 ?>

@@ -186,18 +186,34 @@
       return $lastId;
     }
 
-    function updateEvent ( $idEv, $title, $place, $date, $description ) {
+    function updateEvent ( $idEv, $title, $place, $date, $description, $published ) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
       }  
       $stmt = $mysqli->prepare("UPDATE events SET 
                               title=?, place=?, 
-                              date=?, description=? 
+                              date=?, description=?, isPublished=? 
                               WHERE id=?"
       );
       
-      $stmt->bind_param("ssssi", $title, $place, $date, $description, $idEv);
+      $stmt->bind_param("ssssii", $title, $place, $date, $description, $published, $idEv);
       $stmt->execute();
+
+      // Update published 
+      $stmt = $mysqli->prepare("SELECT id FROM events_published WHERE id=?");
+      $stmt->bind_param("i", $idEv);
+      $stmt->execute();
+      $idPublished = $stmt->get_result()->fetch_assoc();
+      
+      if ( !$idPublished && $published ) {
+        $stmt = $mysqli->prepare("INSERT INTO events_published (id) VALUES ( ? )");
+        $stmt->bind_param("i", $idEv);
+      } else if ( $idPublished && !$published ) {
+        $stmt = $mysqli->prepare("DELETE FROM events_published WHERE id=?");
+        $stmt->bind_param("i", $idEv);
+      }
+      $stmt->execute();
+
       $stmt->close();
     }
 
