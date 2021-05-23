@@ -4,6 +4,10 @@
     {% if role is same as "SUPER" or role is same as "GESTOR" %}
     <div class="mbbbb mttt">
 
+        {% if evento['isPublished'] is same as 0 %}
+            <p class="alert">No está publicado</p>
+        {% endif %}
+
         <button
             class="btn shadow m p btn-outlined-warning edit-button"
             onclick="editEvent(`{{ evento['id'] }}`)"

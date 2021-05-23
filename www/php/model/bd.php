@@ -23,7 +23,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }      
       
-      $stmt = $mysqli->prepare("SELECT id, title, place, date, author, description, photo FROM events WHERE id=?");
+      $stmt = $mysqli->prepare("SELECT id, title, place, date, author, description, photo, isPublished FROM events WHERE id=?");
       $stmt->bind_param("i", $idEv);
       $stmt->execute();
       $event = $stmt->get_result()->fetch_assoc();
@@ -37,7 +37,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }    
       
-      $stmt = $mysqli->prepare("SELECT id, photo, title, date FROM events");
+      $stmt = $mysqli->prepare("SELECT id, photo, title, date, isPublished FROM events");
       $stmt->execute();
       $events = $stmt->get_result()->fetch_all();
       $stmt->close();
@@ -50,7 +50,7 @@
         if ( !($mysqli = startMySqli() )) return;
       }    
       
-      $stmt = $mysqli->prepare("SELECT id, title FROM events");
+      $stmt = $mysqli->prepare("SELECT id, title, isPublished FROM events");
       $stmt->execute();
       $events = $stmt->get_result()->fetch_all();
       $stmt->close();
