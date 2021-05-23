@@ -20,6 +20,11 @@
                 <p>
                     <b>Fecha:</b> {{ attribute(evento, 3) }}
                 </p>
+                {% if role is same as "SUPER" or role is same as "GESTOR" %}
+                    {% if attribute(evento, 4) is same as 0 %}
+                        <p class="alert">No está publicado</p>
+                    {% endif %}
+                {% endif %}
             </div>
         </a>
     {% endfor %}
