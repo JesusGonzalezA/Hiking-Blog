@@ -17,6 +17,7 @@
     $author      = $_SESSION["email"][0];
     $description = $_POST['description'];
     $tags        = $_POST['tag'];
+    $published   = $_POST['published'] === 'on';
 
     if( empty($title)
         || empty($place)
@@ -47,7 +48,7 @@
     }
     // Add event
     if ( empty($errors) ) {
-        $idEvent = addEvent( $title, $place, $date, $author, $description );
+        $idEvent = addEvent( $title, $place, $date, $author, $description, $published );
 
         if (($_FILES['photo']['size'] !== 0)){
             move_uploaded_file($file_tmp, "assets/places/" . $file_name);

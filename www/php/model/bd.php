@@ -170,18 +170,24 @@
       return $tags;
     }
 
-    function addEvent( $title, $place, $date, $author, $description ){
+    function addEvent( $title, $place, $date, $author, $description, $published ){
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
       }  
       $stmt = $mysqli->prepare("INSERT INTO events 
-                                ( title, place, date, author, description) 
-                                VALUES ( ?, ?, ?, ?, ?)"
+                                ( title, place, date, author, description, isPublished) 
+                                VALUES ( ?, ?, ?, ?, ?, ?)"
       );
-      $stmt->bind_param("sssss", $title, $place, $date, $author, $description);
+      $stmt->bind_param("sssssi", $title, $place, $date, $author, $description, $published);
       $stmt->execute();
       $lastId = $mysqli->insert_id;
       $stmt->close();
+
+      if ( $published ) {
+        $stmt = $mysqli->prepare("INSERT INTO events_published (id) VALUES ( ? )");
+        $stmt->bind_param("i", $lastId);
+        $stmt->execute();
+      }
 
       return $lastId;
     }
