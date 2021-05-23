@@ -153,6 +153,10 @@
                 <li class="admin-event shadow user mm">
                     <p class="admin-event-title">
                         {{ attribute(event, 1) }}
+                        
+                        {% if attribute(event, 2) is same as 0 %}
+                            <span class="alert-underlined"><br>No está publicado</span>
+                        {% endif %}
                     </p>
 
                     <div class="comment-admin prr">    

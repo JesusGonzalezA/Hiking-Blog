@@ -130,6 +130,11 @@ a.url:hover {
   padding: 10px;
 }
 
+.alert-underlined {
+  text-decoration: underline;
+  text-decoration-color: var(--bootstrap-danger);
+}
+
 /******************************************************************************/
 .display-none {
   display: none;
