@@ -6,7 +6,9 @@
   $event = getEvent($idEv);
   $gallery = getGallery($idEv);
 
-  if ( $event ){
+  if ( $event && 
+    ( $event['isPublished'] || ( $role === "SUPER" || $role === "GESTOR" ) )  
+  ){
     echo $twig->render('evento_imprimir.html', [
       'evento' => $event,
       'gallery' => $gallery

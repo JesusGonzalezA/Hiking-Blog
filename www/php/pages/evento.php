@@ -11,7 +11,9 @@
   $role = $_SESSION["email"][1];
   $user = getUser($_SESSION["email"][0]);
 
-  if ( $event ){
+  if ( $event && 
+    ( $event['isPublished'] || ( $role === "SUPER" || $role === "GESTOR" ) )  
+  ){
     $comments = getComments($event['id']);
     
     echo $twig->render('evento.html', [
