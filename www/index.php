@@ -75,6 +75,8 @@
     include("php/scripts/add_event.php");
   } else if (startWith($uri, "/update_event.php")){
     include("php/scripts/update_event.php");
+  } else if (startWith($uri, "/search_event.php")){
+    include("php/scripts/search_events.php");
   }
   // Profile
   else if (startWith($uri, "/perfil") ){

@@ -120,6 +120,10 @@ a.url:hover {
   font-weight: bold;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .shadow {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }

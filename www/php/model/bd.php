@@ -192,6 +192,40 @@
       return $lastId;
     }
 
+    function searchBasicEvents ( $query ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }    
+      $query = '%' . $query . '%';
+      
+      $stmt = $mysqli->prepare("SELECT id, title FROM events
+                               WHERE isPublished=1 AND title LIKE ?
+                               OR description LIKE ?"); 
+      $stmt->bind_param("ss", $query, $query );
+      $stmt->execute();
+      $events = $stmt->get_result()->fetch_all();
+      $stmt->close();
+      
+      return $events;
+    }
+
+    function searchEvents ( $query ) {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }    
+      $query = '%' . $query . '%';
+      
+      $stmt = $mysqli->prepare("SELECT id, title FROM events
+                               WHERE title LIKE ?
+                               OR description LIKE ?"); 
+      $stmt->bind_param("ss", $query, $query );
+      $stmt->execute();
+      $events = $stmt->get_result()->fetch_all();
+      $stmt->close();
+      
+      return $events;
+    }
+
     function updateEvent ( $idEv, $title, $place, $date, $description, $published ) {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
