@@ -4,6 +4,8 @@
 Proyecto realizado para la asignatura SIBW, en la Universidad de Granada. Se trata de un blog en el que los usuarios pueden ver eventos y comentarlos.
 Los usuarios tienen restringido el acceso a la funcionalidad según su rol, así he creado las interfaces necesarias para poder administrar la aplicación. Las rutas están protegidas utilizando un control de sesiones en el servidor web. Además, la web es responsive y se utilizan URL limpias.
 
+Los eventos pueden estar publicados o no. En caso de no estarlo, sólo estarán visibles para los usuarios super y gestores, para labores de administración. En caso de estar publicados serán accesibles para todos los usuarios.
+
 ### Tipos de usuarios
 * Registrado: el usuario puede ver los eventos y puede comentar en ellos.
 * Moderador: además, puede editar y borrar comentarios.
