@@ -31,11 +31,20 @@
             />
             <i id="search-icon" class="fa fa-search" aria-hidden="true"></i>
         </div>
+
         <ul class="mttt pp mrr text-left" id="result">
         </ul>
+
+        <div id="loading" class="loading__container hidden">
+            <h2 class="loading__title">
+                Cargando
+            </h2>
+            <div class="loading__loader"></div>
+        </div>
 
 {% endblock %}
 
 
 {% block scripts %}
+<script type="module" src="/js/components/search.js"></script>
 {% endblock %}

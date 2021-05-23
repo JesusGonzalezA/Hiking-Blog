@@ -57,6 +57,38 @@ footer {
     background-color: #f1f1f1;
 }
 
+.loading__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.loading__loader {
+    animation-duration: 2s;
+    animation-name: loading;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    border: 10px solid rgba(0, 128, 0, 0.109);
+    border-radius: 50%;
+    border-top: 10px solid var(--primary);
+    margin: 10px;
+    height: 70px;
+    width: 70px;
+}
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+   }
+    to {
+        transform: rotate(360deg);
+   }
+}
+
 /************************************************/
 /* Responsive */
 @media only screen and ( max-width: 650px ){
