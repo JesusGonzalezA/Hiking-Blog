@@ -7,6 +7,7 @@ CREATE TABLE events
     title VARCHAR(100) NOT NULL, 
     place VARCHAR(100) NOT NULL, 
     date DATE NOT NULL, 
+    isPublished BOOLEAN DEFAULT(FALSE) NOT NULL,
     author VARCHAR(100) REFERENCES users(email),
     description VARCHAR(3000)
 );
