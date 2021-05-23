@@ -26,13 +26,13 @@
         <div class="search">
             <input 
                 type="text" 
-                id="search-bar" 
+                id="searchInput" 
                 placeholder="Buscar un evento por nombre o descripción" 
             />
             <i id="search-icon" class="fa fa-search" aria-hidden="true"></i>
         </div>
 
-        <ul class="mttt pp mrr text-left" id="result">
+        <ul class="mttt pp mrr text-left hidden" id="result">
         </ul>
 
         <div id="loading" class="loading__container hidden">
@@ -46,5 +46,6 @@
 
 
 {% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="module" src="/js/components/search.js"></script>
 {% endblock %}
