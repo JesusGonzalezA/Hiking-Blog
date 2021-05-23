@@ -12,6 +12,12 @@ CREATE TABLE events
     description VARCHAR(3000)
 );
 
+CREATE TABLE events_published
+(
+    id INT PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES events(id) ON DELETE CASCADE
+);
+
 CREATE TABLE comments
 ( 
     id INT AUTO_INCREMENT PRIMARY KEY, 
