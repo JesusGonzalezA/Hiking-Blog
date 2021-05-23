@@ -99,7 +99,9 @@
   // Default
   else {
     include("php/model/bd.php");
-    $events = getEvents();
+    $events = ( $role === "SUPER" || $role === "GESTOR" ) 
+                ? getEvents() 
+                : getPublishedEvents();
     echo $twig->render('index.html', [
       'events'  => $events,
       'role' => $role

@@ -45,6 +45,19 @@
       return $events;
     }
 
+    function getPublishedEvents() {
+      if (!$mysqli){
+        if ( !($mysqli = startMySqli() )) return;
+      }    
+      
+      $stmt = $mysqli->prepare("SELECT id, photo, title, date, isPublished FROM events NATURAL JOIN events_published");
+      $stmt->execute();
+      $events = $stmt->get_result()->fetch_all();
+      $stmt->close();
+      
+      return $events;
+    }
+
     function getEventsBasicInfo () {
       if (!$mysqli){
         if ( !($mysqli = startMySqli() )) return;
